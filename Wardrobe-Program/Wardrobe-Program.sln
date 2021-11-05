@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wardrobe-Program", "Wardrobe-Program\Wardrobe-Program.csproj", "{6E062CB4-153F-4A1D-B629-CC9505563D0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{6E062CB4-153F-4A1D-B629-CC9505563D0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "..\UnitTests\UnitTests.csproj", "{A1A376F8-B274-467D-8AF2-1055C6203087}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{A1A376F8-B274-467D-8AF2-1055C6203087}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
