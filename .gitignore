@@ -1,0 +1,8 @@
+﻿.idea/
+.vs/
+[Oo]bj/
+
+# NUnit
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
