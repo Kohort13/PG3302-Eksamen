@@ -1,6 +1,7 @@
 ﻿.idea/
 .vs/
 [Oo]bj/
+[Bb]in/
 
 # NUnit
 *.VisualState.xml
