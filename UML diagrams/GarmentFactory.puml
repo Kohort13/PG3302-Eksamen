@@ -1,0 +1,21 @@
+@startuml
+
+abstract GarmentFactory{
+    + {abstract} CreateGarment(GarmentID)
+}
+
+class ShoeFactory extends GarmentFactory{
+    + CreateGarment()
+}
+
+interface Garment{
+    + name
+    + type
+    + price
+}
+
+class Shoe implements Garment
+class Top implements Garment
+class Pants implements Garment
+
+@enduml
