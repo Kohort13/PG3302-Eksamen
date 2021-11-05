@@ -18,12 +18,12 @@ namespace Wardrobe_Program
             }
 
             // ReSharper disable once InconsistentNaming
-            internal static readonly Logger _instance = new Logger();
+            internal static readonly Logger _instance = new ();
         }
         #endregion
 
 
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         /// <summary>
         /// Outputs a yellow warning message
         /// </summary>
