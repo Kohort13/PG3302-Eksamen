@@ -1,4 +1,10 @@
-@startuml
+@startuml GarmentFactory
+
+'!include GarmentModel.puml!0
+hide empty members
+
+remove Shade
+remove Colour
 
 skinparam groupInheritance 2
 
@@ -7,18 +13,19 @@ abstract GarmentFactory{
 }
 
 class ShoeFactory extends GarmentFactory{
-    + CreateGarment(): Garment
+    + CreateGarment(): Shoe
 }
-
-interface Garment{
-    + name
-    + type
-    + price
+class TopFactory extends GarmentFactory{
+    + CreateGarment(): Top
 }
-
-class Shoe implements Garment
-class Top implements Garment
-class Pants implements Garment
-GarmentFactory -- Garment
+class BottomFactory extends GarmentFactory{
+    + CreateGarment(): Bottom
+}
+class AccessoryFactory extends GarmentFactory{
+    + CreateGarment(): Accessory
+}
+class OuterwearFactory extends GarmentFactory{
+    + CreateGarment(): Outerwear
+}
 
 @enduml

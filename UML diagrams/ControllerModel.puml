@@ -1,0 +1,20 @@
+@startuml ControllerModel
+    title Controller model
+    class Command{
+        + <<Property>>CommandComponent: string
+        + <<Property>>Parameters: string[]
+        + command(string): Command
+    }
+    note bottom: Parses user input as string in constructor
+
+    interface IController{
+        handle(Command)
+    }
+
+    IController -left- Command: uses >
+
+    class ChangeColourController implements IController{
+        handle(Command)
+    }
+    
+@enduml

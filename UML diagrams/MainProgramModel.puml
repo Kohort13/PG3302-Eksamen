@@ -1,0 +1,22 @@
+@startuml MainProgramModel
+    '!include DatabaseObjectModel.puml!0
+
+    hide empty members
+    page 2x2
+    skinparam pageMargin 10
+    skinparam pageExternalColor gray
+    skinparam pageBorderColor black
+    
+
+    class Program{
+        Commands: Map<string, IController>
+        + main()
+    }
+
+    class AppSettings{
+        /' showColorNames()
+        darkMode()
+        lightMode() '/
+    }  
+
+@enduml

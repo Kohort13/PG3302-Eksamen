@@ -1,0 +1,49 @@
+@startuml GarmentModel
+    hide empty members
+
+    abstract Garment{
+        name: string
+        price: double
+        size: string
+        brand: string
+        seasons: string[]
+        materials: Material[]
+        notes: string
+    }
+
+    class Material{
+        colour: Colour
+        shade: Shade
+        fabric: string
+    }
+
+    enum Colour{
+        RED
+        ORANGE
+        YELLOW
+        GREEN
+        BLUE
+        INDIGO
+        VIOLET
+        BROWN
+        BLACK
+        WHITE
+    }
+    enum Shade{
+        DARK
+        BRIGHT
+        NEON
+        PASTEL
+    }
+
+    Garment o-right- Material: Aggregation
+    Material -- Colour
+    Material -- Shade
+
+    class Shoe implements Garment
+    class Top implements Garment
+    class Bottom implements Garment
+    class Accessory implements Garment
+    class Outerwear implements Garment
+
+@enduml

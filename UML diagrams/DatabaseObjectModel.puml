@@ -1,4 +1,6 @@
-@startuml
+@startuml ObjectModel
+    title Database access control
+    
     skinparam groupInheritance 2
     hide empty members
     abstract AbstractDao{
