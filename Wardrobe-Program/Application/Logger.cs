@@ -31,7 +31,7 @@ namespace Wardrobe_Program
         public void Warning(string message) {
             Print($"WARNING: {message}", ConsoleColor.Yellow);
         }
-
+        
         /// <summary>
         /// Outputs a red error message
         /// </summary>

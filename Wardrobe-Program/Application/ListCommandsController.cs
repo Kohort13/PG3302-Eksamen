@@ -13,11 +13,11 @@ namespace Wardrobe_Program
         public ListCommandsController(Dictionary<string, IController> availableControllers) {
             _availableControllers = availableControllers;
         }
-
+        
         public void Handle(Command command) {
             foreach (var commandComponent in _availableControllers.Keys) {
                 UserInterface.Instance.Print($"{commandComponent}");
-            }
+            } 
         }
     }
 }

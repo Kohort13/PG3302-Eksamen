@@ -11,5 +11,7 @@ namespace Wardrobe_Program
 		{
 			_garmentDao = garmentDao;
 		}
-	}
+
+		//Assumes that an id is given as first parameter, and name is 
+	}	
 }
