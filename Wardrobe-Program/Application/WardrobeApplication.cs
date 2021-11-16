@@ -8,8 +8,12 @@ namespace Wardrobe_Program
             Application app = new();
             MockDatabase data = new();
 
-            app.AddController("change-colour", new ChangeNameController(data));
+            ShoeFactory shoeFactory = new();
+            data.Insert(shoeFactory.CreateGarment());
+
+            app.AddController("change-name", new ChangeNameController(data));
             app.AddController("list-controllers", new ListCommandsController(app.Controllers));
+            app.AddController("change-price", new ChangePriceController(data));
 
             app.RunApplication();
         }

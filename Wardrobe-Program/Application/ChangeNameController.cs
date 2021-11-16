@@ -4,7 +4,7 @@ namespace Wardrobe_Program
 {
     public class ChangeNameController : IController
     {
-        private IDao<Garment> _garmentDao;
+        private readonly IDao<Garment> _garmentDao;
         public ChangeNameController(IDao<Garment> garmentDao) {
             _garmentDao = garmentDao;
         }
