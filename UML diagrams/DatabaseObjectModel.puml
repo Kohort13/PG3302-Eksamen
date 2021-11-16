@@ -1,0 +1,22 @@
+@startuml
+    skinparam groupInheritance 2
+    hide empty members
+    abstract AbstractDao{
+        - DataSource
+        # insert()
+        # update()
+        # retrieve()
+        # listAll()
+        # delete()
+    }
+    class GarmentDao extends AbstractDao
+    class SizeDao extends AbstractDao
+    class BrandDao extends AbstractDao
+    class MaterialDao extends AbstractDao
+    class GarmentToMaterialDao extends AbstractDao
+    class OutfitDao extends AbstractDao
+    class CategoryDao extends AbstractDao
+    class GarmentToOutfitDao extends AbstractDao
+    class WearDao extends AbstractDao
+    class ColourDao extends AbstractDao
+@enduml

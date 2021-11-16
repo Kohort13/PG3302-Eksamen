@@ -1,16 +1,19 @@
 @startuml Database
 
 title Wardrobe database model
-!theme amiga
 hide circle
 hide methods
 
 class Garment{
     id **PK**
-    color
     price
-    material_id //FK//
     brand_id //FK//
+    size_id //FK//
+}
+
+class Size{
+    id **PK**
+    size_name
 }
 
 class Brand{
@@ -20,7 +23,13 @@ class Brand{
 
 class Material{
     id **PK**
+    colour_id //FK//
     name
+}
+
+class GarmentToMaterial{
+    garment_id **PK** //FK//
+    material_id **PK** //FK//
 }
 
 class Outfit{
@@ -37,12 +46,26 @@ class GarmentToOutfit{
     outfit_id **PK** //FK//
 }
 
+class Wear{
+    date **PK**
+    garment_id //FK//
+}
 
-Garment "*" -right- "1" Category
-Garment "1" -down- "1" GarmentToOutfit
-GarmentToOutfit "1" -right- "1" Outfit
-Garment "*" -left- "1" Brand
-Garment "*" -up- "1" Material
+class Colour{
+    id **PK**
+    colour_code
+}
+
+
+Garment "*" -- "1" Category
+Garment "1" -- "1" GarmentToOutfit
+GarmentToOutfit "1" -- "1" Outfit
+Garment -- GarmentToMaterial
+GarmentToMaterial -- Material
+Garment -- Size
+Garment "*" -- "1" Brand
+Wear "*" -- "1" Garment
+Material -- Colour
 
 
 @enduml

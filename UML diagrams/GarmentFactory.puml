@@ -1,11 +1,13 @@
 @startuml
 
+skinparam groupInheritance 2
+
 abstract GarmentFactory{
     + {abstract} CreateGarment(GarmentID)
 }
 
 class ShoeFactory extends GarmentFactory{
-    + CreateGarment()
+    + CreateGarment(): Garment
 }
 
 interface Garment{
@@ -17,5 +19,6 @@ interface Garment{
 class Shoe implements Garment
 class Top implements Garment
 class Pants implements Garment
+GarmentFactory -- Garment
 
 @enduml
