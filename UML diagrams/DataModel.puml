@@ -1,71 +1,68 @@
 @startuml Database
 
 title Wardrobe database model
-hide circle
-hide methods
 
-class Garment{
+object Garment{
     id **PK**
     price
     brand_id //FK//
     size_id //FK//
 }
 
-class Size{
-    id **PK**
-    size_name
+object GarmentToMaterial{
+    garment_id **PK** //FK//
+    material_id **PK** //FK//
 }
 
-class Brand{
+object Outfit{
+    id **PK**
+}
+
+object Category{
     id **PK**
     name
 }
 
-class Material{
+object GarmentToOutfit{
+    garment_id **PK** //FK//
+    outfit_id **PK** //FK//
+}
+
+object Size{
+    id **PK**
+    size_name
+}
+
+object Brand{
+    id **PK**
+    name
+}
+
+object Material{
     id **PK**
     colour_id //FK//
     name
 }
 
-class GarmentToMaterial{
-    garment_id **PK** //FK//
-    material_id **PK** //FK//
-}
-
-class Outfit{
-    id **PK**
-}
-
-class Category{
-    id **PK**
-    name
-}
-
-class GarmentToOutfit{
-    garment_id **PK** //FK//
-    outfit_id **PK** //FK//
-}
-
-class Wear{
+object Wear{
     date **PK**
     garment_id //FK//
 }
 
-class Colour{
+object Colour{
     id **PK**
     colour_code
 }
 
 
-Garment "*" -- "1" Category
-Garment "1" -- "1" GarmentToOutfit
-GarmentToOutfit "1" -- "1" Outfit
-Garment -- GarmentToMaterial
-GarmentToMaterial -- Material
-Garment -- Size
-Garment "*" -- "1" Brand
+Garment "1..*" -- "0..*" Outfit
+(Garment, Outfit) .. GarmentToOutfit
+Garment "0..*" -- "1..*" Material
+(Garment, Material) .. GarmentToMaterial
+Garment "*" -right- "1" Category
+Garment -right- Size
+Garment "*" -right- "1" Brand
 Wear "*" -- "1" Garment
 Material -- Colour
-
 
 @enduml
