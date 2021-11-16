@@ -2,6 +2,7 @@
 .vs/
 [Oo]bj/
 [Bb]in/
+*.user
 
 # NUnit
 *.VisualState.xml
