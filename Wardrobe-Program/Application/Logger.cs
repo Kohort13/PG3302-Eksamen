@@ -29,7 +29,7 @@ namespace Wardrobe_Program
         /// </summary>
         /// <param name="message"></param>
         public void Warning(string message) {
-            Print(message, ConsoleColor.Yellow);
+            Print($"WARNING: {message}", ConsoleColor.Yellow);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Wardrobe_Program
         /// </summary>
         /// <param name="message"></param>
         public void Error(string message) {
-            Print(message, ConsoleColor.DarkRed);
+            Print($"ERROR: {message}", ConsoleColor.DarkRed);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Wardrobe_Program
         /// </summary>
         /// <param name="message"></param>
         public void Info(string message) {
-            Print(message, ConsoleColor.DarkCyan);
+            Print($"INFO: {message}", ConsoleColor.DarkCyan);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Wardrobe_Program
         /// </summary>
         /// <param name="message"></param>
         public void Log(string message) {
-            Print(message);
+            Print($"LOG: {message}");
         }
 
         private void Print(string message, ConsoleColor color) {
