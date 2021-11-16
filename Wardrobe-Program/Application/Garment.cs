@@ -1,7 +1,9 @@
 using System;
 
-namespace Wardrobe_Program{
-    public class Garment{
+namespace Wardrobe_Program
+{
+    abstract class Garment
+    {
         public string Name{get;set;}
         public int Price{get;set;}
         public string Size{get;set;}
