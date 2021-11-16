@@ -1,22 +1,25 @@
 @startuml MainProgramModel
     '!include DatabaseObjectModel.puml!0
 
-    hide empty members
-    page 2x2
-    skinparam pageMargin 10
-    skinparam pageExternalColor gray
-    skinparam pageBorderColor black
-    
+    hide empty members    
 
-    class Program{
-        Commands: Map<string, IController>
+    class WardrobeApplication{
+        - Application
         + main()
+    }
+
+    class Application{
+        Commands: Map<string, IController>
+        + addController(string, IController)
+        + runApplication()
     }
 
     class AppSettings{
         /' showColorNames()
         darkMode()
         lightMode() '/
-    }  
+    }
+
+    Main o-- Application  
 
 @enduml

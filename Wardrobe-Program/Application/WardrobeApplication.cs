@@ -2,10 +2,12 @@
 
 namespace Wardrobe_Program
 {
-    class Program
+    class WardrobeApplication
     {
         static void Main(string[] args) {
-            Logger.Instance.Log("Hello world!");
+            Application app = new();
+
+            app.RunApplication();
         }
     }
 }
