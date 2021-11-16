@@ -1,6 +1,6 @@
 ﻿namespace Wardrobe_Program
 {
-    class Material
+    public class Material
     {
         public string Fabric { get; set; }
 
