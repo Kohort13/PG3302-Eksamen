@@ -9,7 +9,7 @@ namespace Wardrobe_Program
 
     public class ShoeFactory : GarmentFactory
     {
-        public Garment CreateGarment()
+        public override Garment CreateGarment()
         {
             return new Shoe();
         }
@@ -17,28 +17,28 @@ namespace Wardrobe_Program
 
     public class TopFactory : GarmentFactory
     {
-        public Garment CreateGarment()
+        public override Garment CreateGarment()
         {
             return new Top();
         }
     }
     public class BottomFactory : GarmentFactory
     {
-        public Garment CreateGarment()
+        public override Garment CreateGarment()
         {
-            return new BottomFactory();
+            return new Bottom();
         }
     }
     public class AccessoryFactory : GarmentFactory
     {
-        public Garment CreateGarment()
+        public override Garment CreateGarment()
         {
             return new Accessory();
         }
     }
     public class OuterwearFactory : GarmentFactory
     {
-        public Garment CreateGarment()
+        public override Garment CreateGarment()
         {
             return new Outerwear();
         }

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-
+    
 namespace Wardrobe_Program
 {
-    abstract class Garment
+    public abstract class Garment
     {
         public string Name{get;set;}
         public int Price{get;set;}
