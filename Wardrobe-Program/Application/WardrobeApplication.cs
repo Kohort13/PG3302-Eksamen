@@ -13,7 +13,8 @@ namespace Wardrobe_Program
 
             app.AddController("change-name", new ChangeNameController(data));
             app.AddController("list-controllers", new ListCommandsController(app.Controllers));
-            app.AddController("change-price", new ChangePriceController(data));
+			app.AddController("change-price", new ChangePriceController(data));
+			app.AddController("change-size", new ChangeSizeController(data));
 
             app.RunApplication();
         }
