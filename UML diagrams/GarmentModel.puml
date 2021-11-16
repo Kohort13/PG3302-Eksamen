@@ -28,6 +28,7 @@
         BROWN
         BLACK
         WHITE
+        PINK
     }
     enum Shade{
         DARK
