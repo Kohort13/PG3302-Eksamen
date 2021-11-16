@@ -1,7 +1,7 @@
 ﻿
 namespace Wardrobe_Program
 {
-    interface IController
+    public interface IController
     {
         public void Handle(Command command);
     }

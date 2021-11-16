@@ -8,7 +8,7 @@ namespace Wardrobe_Program
 {
     public class MockDatabase : IDao<Garment>
     {
-        private List<Garment> _data;
+        private List<Garment> _data = new List<Garment>();
         public Garment Retrieve(int id) {
             return _data[id];
         }

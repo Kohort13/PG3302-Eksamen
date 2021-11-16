@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Wardrobe_Program
 {
-    class Application
+    public class Application
     {
         public Dictionary<string, IController> Controllers { get; }
 
