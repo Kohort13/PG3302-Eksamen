@@ -7,12 +7,12 @@ namespace UnitTests
     class ControllersTest
     {
         private Application app;
-        private MockDatabase data;
+        private MockDao data;
 
         [SetUp]
         public void Setup() {
             app = new Application();
-            data = new MockDatabase();
+            data = new MockDao();
         }
 
         [Test]

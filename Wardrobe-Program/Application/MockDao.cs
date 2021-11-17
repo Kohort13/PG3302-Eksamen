@@ -7,7 +7,7 @@ namespace Wardrobe_Program
     /// <summary>
     /// An in-memory GarmentDao that can be used for testing/mocking
     /// </summary>
-    public class MockDatabase : IDao<Garment>
+    public class MockDao : IDao<Garment>
     {
         public Garment Retrieve(long id) {
             return _data.Find(garment => garment.Id == id);
@@ -34,9 +34,11 @@ namespace Wardrobe_Program
             garmentToUpdate.Size = element.Size;
         }
 
-        public MockDatabase GetPopulatedTestDatabase() {
-            MockDatabase data = new();
-            data._data.AddRange(new List<Garment>{ new Accessory(), new Shoe(), new Outerwear(), new Top() });
+        public static MockDao GetPopulatedTestDatabase() {
+            MockDao data = new();
+            for (int i = 0; i < 15; i++) {
+                data.Insert(new Accessory());
+            }
             return data;
         }
 

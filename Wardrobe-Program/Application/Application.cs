@@ -7,11 +7,10 @@ namespace Wardrobe_Program
     {
         public Dictionary<string, IController> Controllers { get; }
 
-        public List<Garment> MockDatabase { get; }
+        public IDao<Garment> Database { get; set; }
 
         public Application() {
-            Controllers = new();
-            MockDatabase = new();
+            Controllers = new Dictionary<string, IController>();
         }
 
         public void AddController(string commandTrigger, IController controller) {

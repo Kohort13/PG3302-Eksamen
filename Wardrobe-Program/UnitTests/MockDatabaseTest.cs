@@ -5,22 +5,22 @@ namespace UnitTests
 {
     class MockDatabaseTest
     {
-        private MockDatabase _database;
+        private MockDao _dao;
         [SetUp]
         public void Setup() {
-            _database = new();
+            _dao = new();
         }
 
         [Test]
         public void TestUpdate() {
             var shoe = new Shoe();
             var pants = new Bottom();
-            _database.Insert(shoe);
-            _database.Insert(pants);
+            _dao.Insert(shoe);
+            _dao.Insert(pants);
             var idBeforeUpdate = pants.Id;
 
             var updatedPants = new Bottom { Name = "A new name", Id = 4664 };
-            _database.Update(pants.Id, updatedPants);
+            _dao.Update(pants.Id, updatedPants);
 
             Assert.AreNotEqual(pants.Id, updatedPants.Id);
             Assert.AreEqual(pants.Id, idBeforeUpdate);
