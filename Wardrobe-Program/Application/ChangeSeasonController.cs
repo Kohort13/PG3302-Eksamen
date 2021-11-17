@@ -16,7 +16,10 @@ namespace Wardrobe_Program
 		//change-season -id 44 -sp -su -w -f
 		public override void Handle(Command command)
 		{
-			base.Handle(command);
+            if (!ValidateCommand(command)) {
+                return;
+            }
+
             UserInterface.Instance.Print("This should change the garment's season");
 			long id = Convert.ToInt64(command.Parameters["-id"]);
 			//Garment garmentToChange = _garmentDao.Retrieve(id);

@@ -2,17 +2,13 @@
 {
     public abstract class AbstractController : IController
     {
-        public virtual void Handle(Command command) {
-            if (!ValidateCommand(command)) {
-                Logger.Instance.Error("Incorrect format of command");
-            }
-        }
+        public abstract void Handle(Command command);
 
         public virtual void Help(Command command) {
             throw new System.NotImplementedException();
         }
 
-        private bool ValidateCommand(Command command) {
+        private protected bool ValidateCommand(Command command) {
             foreach (var parametersKey in command.Parameters.Keys) {
                 bool isValidKey = false;
                 foreach (var allowedKeys in GetAllowedCommandFormat().Parameters.Keys) {
@@ -21,6 +17,7 @@
                     }
                 }
                 if (!isValidKey) {
+                    Logger.Instance.Error("Incorrect format of command");
                     return false;
                 }
             }
