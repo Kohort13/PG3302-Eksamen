@@ -24,7 +24,7 @@ namespace Wardrobe_Program
                 while (i < parametersAsList.Count) {
                     var current = parametersAsList[i];
 
-                    if (i + 1 < parametersAsList.Count) {
+                    if (i < parametersAsList.Count) {
                         do {
                             if (current.StartsWith('-')) {
                                 key = current;
