@@ -5,6 +5,7 @@ namespace Wardrobe_Program
 {
     public class Application
     {
+        private bool _running;
         public Dictionary<string, IController> Controllers { get; }
 
         public IDao<Garment> Database { get; set; }
@@ -18,10 +19,11 @@ namespace Wardrobe_Program
         }
 
         public void RunApplication() {
+            _running = true;
             Logger.Instance.Info("Application is starting");
             Logger.Instance.Info("Type list-controllers to see all registered commands");
 
-            while (true) {
+            while (_running) {
                 var userInput = Console.ReadLine();
                 if (userInput != null) {
                     Command command = new(userInput);
@@ -30,6 +32,10 @@ namespace Wardrobe_Program
                     }
                 }
             }
+        }
+
+        public void Quit() {
+            _running = false;
         }
     }
 }

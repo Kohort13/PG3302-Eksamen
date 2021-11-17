@@ -30,5 +30,9 @@ namespace Wardrobe_Program
             Console.ResetColor();
             Print(message, Console.ForegroundColor);
         }
+
+        public void ClearScreen() {
+            Console.Clear();
+        }
     }
 }
