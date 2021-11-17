@@ -5,6 +5,7 @@ namespace Wardrobe_Program
 {
     public abstract class Garment
     {
+        public long Id { get; set; }
         public string Name { get; set; }
         public float Price { get; set; }
         public string Size { get; set; } = "One-size";
