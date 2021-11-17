@@ -26,8 +26,8 @@ namespace Wardrobe_Program
                 var userInput = Console.ReadLine();
                 if (userInput != null) {
                     Command command = new(userInput);
-                    if (Controllers.ContainsKey(command.CommandComponent)) {
-                        Controllers[command.CommandComponent].Handle(command);
+                    if (Controllers.ContainsKey(command.Keyword)) {
+                        Controllers[command.Keyword].Handle(command);
                     }
                 }
             }

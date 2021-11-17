@@ -15,10 +15,14 @@ namespace Wardrobe_Program
         public void Handle(Command command)
         {
             UserInterface.Instance.Print("This should change the garment price");
-            long id = Convert.ToInt64(command.Parameters[0]);
+            long id = Convert.ToInt64(command.Parameters["-id"]);
             Garment garmentToChange = _garmentDao.Retrieve(id);
-            garmentToChange.Price = Convert.ToSingle(command.Parameters[1]);
+            garmentToChange.Price = Convert.ToSingle(command.Parameters["-v"]);
             UserInterface.Instance.Print($"Garment price is now: {garmentToChange.Price}");
+        }
+
+        public void Help(Command command) {
+            throw new NotImplementedException();
         }
     }
 }

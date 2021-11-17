@@ -17,10 +17,14 @@ namespace Wardrobe_Program
 		public void Handle(Command command)
 		{
 			UserInterface.Instance.Print("This should change the garment size");
-			long id = Convert.ToInt64(command.Parameters[0]);
+			long id = Convert.ToInt64(command.Parameters["-id"]);
 			Garment garmentToChange = _garmentDao.Retrieve((id));
-			garmentToChange.Size = command.Parameters[1];
+			garmentToChange.Size = command.Parameters["-v"];
 			UserInterface.Instance.Print($"Garment size is now: {garmentToChange.Size}");
 		}
-	}
+
+        public void Help(Command command) {
+            throw new NotImplementedException();
+        }
+    }
 }
