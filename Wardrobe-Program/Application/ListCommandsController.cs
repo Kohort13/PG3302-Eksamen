@@ -15,5 +15,9 @@ namespace Wardrobe_Program
                 UserInterface.Instance.Print($"{commandComponent}");
             } 
         }
+
+        public void Help(Command command) {
+            throw new System.NotImplementedException();
+        }
     }
 }

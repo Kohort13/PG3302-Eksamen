@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Wardrobe_Program
 {
+    /// <summary>
+    /// An in-memory GarmentDao that can be used for testing/mocking
+    /// </summary>
     public class MockDatabase : IDao<Garment>
     {
         public Garment Retrieve(long id) {
@@ -34,7 +37,7 @@ namespace Wardrobe_Program
             return _nextId++;
         }
 
-        private long _nextId = -1;
+        private long _nextId = 0;
 
         private readonly List<Garment> _data = new();
     }

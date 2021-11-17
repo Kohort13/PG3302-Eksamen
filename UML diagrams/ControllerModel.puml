@@ -11,6 +11,10 @@
         handle(Command)
     }
 
+    abstract class AbstractController{
+        
+    }
+
     IController -left- Command: uses >
 
     class ChangeColourController implements IController{

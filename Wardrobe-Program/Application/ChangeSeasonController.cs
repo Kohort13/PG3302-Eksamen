@@ -3,21 +3,23 @@ using System.Collections.Generic;
 
 namespace Wardrobe_Program
 {
-	public class ChangeSeasonController : IController
+	public class ChangeSeasonController : AbstractController
 	{
 		private readonly IDao<Garment> _garmentDao;
 
 		public ChangeSeasonController(IDao<Garment> garmentDao)
 		{
 			_garmentDao = garmentDao;
+            
 		}
 
 		//change-season -id 44 -sp -su -w -f
-		public void Handle(Command command)
+		public override void Handle(Command command)
 		{
-			UserInterface.Instance.Print("This should change the garment's season");
+			base.Handle(command);
+            UserInterface.Instance.Print("This should change the garment's season");
 			long id = Convert.ToInt64(command.Parameters["-id"]);
-			Garment garmentToChange = _garmentDao.Retrieve(id);
+			//Garment garmentToChange = _garmentDao.Retrieve(id);
             List<string> newSeasons = new();
             {
                 foreach (var key in command.Parameters.Keys) {
@@ -38,12 +40,17 @@ namespace Wardrobe_Program
                 }
             }
 
-            garmentToChange.Seasons = newSeasons;
-			UserInterface.Instance.Print($"Garment's seasons is now: {garmentToChange.Seasons}");
+            //garmentToChange.Seasons = newSeasons;
+			//UserInterface.Instance.Print($"Garment's seasons is now: {garmentToChange.Seasons}");
+            Logger.Instance.Log("Garment has new seasons");
 		}
 
         public void Help(Command command) {
             throw new NotImplementedException();
+        }
+
+        protected override Command GetAllowedCommandFormat() {
+            return new Command { Parameters = { { "-id", "" }, { "-sp", "" }, { "-su", "" }, { "-w", "" }, { "-f", "" } } };
         }
     }
 }
