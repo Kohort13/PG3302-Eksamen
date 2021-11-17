@@ -19,7 +19,7 @@ namespace UnitTests
         public void TestChangeNameController() {
             data.Insert(new Accessory());
             app.AddController("change-name", new ChangeNameController(data));
-            app.Controllers["change-name"].Handle(new Command("change-name -id 0 -v A-new-name"));
+            app.Controllers["change-name"].Handle(new Command("change-name -id 0 -val A-new-name"));
             Assert.AreEqual("A-new-name", data.Retrieve(0).Name);
         }
 
@@ -27,7 +27,7 @@ namespace UnitTests
         public void TestChangePriceController() {
             data.Insert(new Accessory());
             app.AddController("change-price", new ChangePriceController(data));
-            app.Controllers["change-price"].Handle(new Command("change-price -id 0 -v 404"));
+            app.Controllers["change-price"].Handle(new Command("change-price -id 0 -val 404"));
             Assert.AreEqual(404, data.Retrieve(0).Price);
         }
 
@@ -35,7 +35,7 @@ namespace UnitTests
         public void TestChangeSizeController() {
 	        data.Insert(new Accessory());
 	        app.AddController("change-size", new ChangeSizeController(data));
-	        app.Controllers["change-size"].Handle(new Command("change-size -id 0 -v new-size"));
+	        app.Controllers["change-size"].Handle(new Command("change-size -id 0 -val new-size"));
 	        Assert.AreEqual("new-size", data.Retrieve(0).Size);
         }
 

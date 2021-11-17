@@ -14,7 +14,7 @@ namespace Wardrobe_Program
         public void Handle(Command command) {
             long id = Convert.ToInt64(command.Parameters["-id"]);
             Garment garmentToChange = _garmentDao.Retrieve(id);
-            garmentToChange.Name = command.Parameters["-v"];
+            garmentToChange.Name = command.Parameters["-val"];
             UserInterface.Instance.Print($"Garment name is now: {garmentToChange.Name}");
         }
 
