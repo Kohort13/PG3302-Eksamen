@@ -29,11 +29,13 @@ namespace Wardrobe_Program
                             if (current.StartsWith('-')) {
                                 key = current;
                                 value = "";
-                                current = parametersAsList[i + 1 < parametersAsList.Count ? ++i : i];
+                                i++;
                             } else {
                                 value += current + " ";
-                                current = parametersAsList[i + 1 < parametersAsList.Count ? ++i : i];
+                                i++;
                             }
+                            current = (i < parametersAsList.Count) ? parametersAsList[i] : parametersAsList[i - 1];
+
                         } while (i + 1 <= parametersAsList.Count && !current.StartsWith('-'));
 
                         Parameters.TryAdd(key, value.Trim());
