@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 
 namespace Wardrobe_Program
 {
@@ -31,6 +32,12 @@ namespace Wardrobe_Program
             garmentToUpdate.Notes = element.Notes;
             garmentToUpdate.Price = element.Price;
             garmentToUpdate.Size = element.Size;
+        }
+
+        public MockDatabase GetPopulatedTestDatabase() {
+            MockDatabase data = new();
+            data._data.AddRange(new List<Garment>{ new Accessory(), new Shoe(), new Outerwear(), new Top() });
+            return data;
         }
 
         private long GetNextId() {
