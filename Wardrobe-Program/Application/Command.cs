@@ -16,21 +16,23 @@ namespace Wardrobe_Program
                 var parametersAsList = new List<string>(userInput.Substring(firstSpace + 1).Split(" "));
                 //Når list-element starter på -, legg til ny key. Frem til du treffer en ny -, legg til påfølgende list-element til value for den key'en
 
-                //-id 1 -v green
-                int i = 0;
-                string key = "";
-                string value = "";
-
-                while (i < parametersAsList.Count) {
+                for (int i = 0; i < parametersAsList.Count;) {
+                    string key = "";
+                    string value = "";
                     var current = parametersAsList[i];
 
-                    if (i < parametersAsList.Count) {
-                        do {
-                            if (current.StartsWith('-')) {
+                    if (i < parametersAsList.Count)
+                    {
+                        do
+                        {
+                            if (current.StartsWith('-'))
+                            {
                                 key = current;
                                 value = "";
                                 i++;
-                            } else {
+                            }
+                            else
+                            {
                                 value += current + " ";
                                 i++;
                             }
@@ -42,7 +44,6 @@ namespace Wardrobe_Program
                     }
                 }
             }
-
             Keyword = userInput.Substring(0, firstSpace > 0 ? firstSpace : userInput.Length);
         }
 
