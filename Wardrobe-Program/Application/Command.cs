@@ -16,6 +16,8 @@ namespace Wardrobe_Program
                 var parametersAsList = new List<string>(userInput.Substring(firstSpace + 1).Split(" "));
                 //Når list-element starter på -, legg til ny key. Frem til du treffer en ny -, legg til påfølgende list-element til value for den key'en
 
+                //Splits parameters into keys and values. All strings after one that starts with a '-' will be handled as one value
+
                 for (int i = 0; i < parametersAsList.Count;) {
                     string key = "";
                     string value = "";
@@ -23,16 +25,12 @@ namespace Wardrobe_Program
 
                     if (i < parametersAsList.Count)
                     {
-                        do
-                        {
-                            if (current.StartsWith('-'))
-                            {
+                        do {
+                            if (current.StartsWith('-')) {
                                 key = current;
                                 value = "";
                                 i++;
-                            }
-                            else
-                            {
+                            } else {
                                 value += current + " ";
                                 i++;
                             }

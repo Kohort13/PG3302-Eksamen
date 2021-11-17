@@ -19,7 +19,6 @@ namespace Wardrobe_Program
             if (!ValidateCommand(command)) {
                 return;
             }
-            Logger.Instance.Log("This should change the garment's season");
 			long id = Convert.ToInt64(command.Parameters["-id"]);
 			Garment garmentToChange = _garmentDao.Retrieve(id);
             List<string> newSeasons = new();
@@ -47,12 +46,23 @@ namespace Wardrobe_Program
             Logger.Instance.Log("Garment has new seasons");
 		}
 
-        public void Help(Command command) {
+        public override void Help(Command command) {
             throw new NotImplementedException();
         }
 
-        protected override Command GetAllowedCommandFormat() {
-            return new Command { Parameters = { { "-id", "" }, { "-sp", "" }, { "-su", "" }, { "-w", "" }, { "-f", "" }, { "-a", "" } } };
+        protected override ControllerValidator GetControllerValidator() {
+            return new ControllerValidator
+            {
+                AvailableKeys =
+                {
+                    { "-id", (true, true) },
+                    { "-sp", (false, false) },
+                    { "-su", (false, false) },
+                    { "-au", (false, false) },
+                    { "-fa", (false, false) },
+                    { "-wi", (false, false) }
+                }
+            };
         }
     }
 }

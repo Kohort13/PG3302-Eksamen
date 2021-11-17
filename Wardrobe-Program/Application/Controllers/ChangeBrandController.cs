@@ -2,7 +2,7 @@
 
 namespace Wardrobe_Program
 {
-	public class ChangeBrandController : IController
+	public class ChangeBrandController : AbstractController
 	{
 		private readonly IDao<Garment> _garmentDao;
 
@@ -12,17 +12,31 @@ namespace Wardrobe_Program
 		}
 
 
-		public void Handle(Command command)
+		public override void Handle(Command command)
 		{
-			UserInterface.Instance.Print("This should change the garment's brand");
-			long id = Convert.ToInt64(command.Parameters["-id"]);
+            if (!ValidateCommand(command))
+            {
+                return;
+            }
+            long id = Convert.ToInt64(command.Parameters["-id"]);
 			Garment garmentToChange = _garmentDao.Retrieve(id);
-			garmentToChange.Brand = command.Parameters["-v"];
+			garmentToChange.Brand = command.Parameters["-val"];
 			UserInterface.Instance.Print($"Garment's brand is now: {garmentToChange.Brand}");
 		}
 
-        public void Help(Command command) {
+        public override void Help(Command command) {
             throw new NotImplementedException();
+        }
+
+        protected override ControllerValidator GetControllerValidator() {
+            return new ControllerValidator
+            {
+                AvailableKeys =
+                {
+                    { "-id", (true, true) },
+                    { "-val", (true, true) }
+                }
+            };
         }
     }
 }

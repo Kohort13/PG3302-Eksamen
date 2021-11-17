@@ -6,8 +6,11 @@
             UserInterface.Instance.ClearScreen();
         }
 
-        protected override Command GetAllowedCommandFormat() {
-            return new Command();
+        protected override ControllerValidator GetControllerValidator() {
+            return new ControllerValidator
+            {
+                AvailableKeys = new()
+            };
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Wardrobe_Program
+﻿using System.Collections.Generic;
+
+namespace Wardrobe_Program
 {
     public class QuitController : AbstractController
     {
@@ -11,8 +13,11 @@
             _app.Quit();
         }
 
-        protected override Command GetAllowedCommandFormat() {
-            return new Command();
+        protected override ControllerValidator GetControllerValidator() {
+            return new ControllerValidator
+            {
+                AvailableKeys = new()
+            };
         }
     }
 }

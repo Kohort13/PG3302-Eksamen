@@ -15,7 +15,9 @@ namespace Wardrobe_Program
         public string Notes { get; set; }
 
         public override string ToString() {
-	        return $"Item ID: {Id} - Name: {Name} - Purchase price: {Price} - Size: {Size} - Brand: {Brand} - Seasons: {SeasonsAsString()} - Materials: {Materials} - Notes: {Notes}";
+	        return $"Item ID: {Id} - Name: {Name} - Purchase price: {Price} " +
+                   $"- Size: {Size} - Brand: {Brand} - Seasons: {SeasonsAsString()} " +
+                   $"- Materials: {Materials} - Notes: {Notes}";
         }
 
         private string SeasonsAsString() {
