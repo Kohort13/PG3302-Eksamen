@@ -8,9 +8,9 @@ namespace Wardrobe_Program
 {
     public interface IDao<T>
     {
-        public T Retrieve(int id);
+        public T Retrieve(long id);
         public List<T> ListAll();
         public void Insert(T element);
-        public void Update(int id, T element);
+        public void Update(long id, T element);
     }
 }
