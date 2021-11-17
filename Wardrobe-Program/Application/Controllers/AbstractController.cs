@@ -8,7 +8,7 @@
             throw new System.NotImplementedException();
         }
 
-        private protected bool ValidateCommand(Command command) {
+        private protected virtual bool ValidateCommand(Command command) {
             foreach (var parametersKey in command.Parameters.Keys) {
                 bool isValidKey = false;
                 foreach (var allowedKeys in GetAllowedCommandFormat().Parameters.Keys) {

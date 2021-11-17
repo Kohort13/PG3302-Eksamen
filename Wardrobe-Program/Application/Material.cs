@@ -3,28 +3,34 @@
     public class Material
     {
         public string Fabric { get; set; }
+        public Colours Colour { get; set; }
+        public Shades Shade { get; set; }
 
-        enum Colour
+        public enum Colours
         {
-            RED,
-            ORANGE,
-            YELLOW,
-            GREEN,
-            BLUE,
-            INDIGO,
-            VIOLET,
-            BROWN,
-            BLACK,
-            WHITE,
-            PINK
+            Red,
+            Orange,
+            Yellow,
+            Green,
+            Blue,
+            Indigo,
+            Violet,
+            Brown,
+            Black,
+            White,
+            Pink
         }
 
-        enum Shade
+        public enum Shades
         {
-            DARK,
-            LIGHT,
-            NEON,
-            PASTEL
+            Dark,
+            Light,
+            Neon,
+            Pastel
+        }
+
+        public override string ToString() {
+            return $"Material{{{Colour}, {Shade}}}";
         }
     }
 }

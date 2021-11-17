@@ -37,7 +37,7 @@ namespace Wardrobe_Program
         public static MockDao GetPopulatedTestDatabase() {
             MockDao data = new();
             for (int i = 0; i < 15; i++) {
-                data.Insert(new Accessory());
+                data.Insert(new Accessory{Name = "A name", Seasons = {"Winter", "Summer"}});
             }
             return data;
         }

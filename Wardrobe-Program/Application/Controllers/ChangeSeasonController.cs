@@ -35,7 +35,7 @@ namespace Wardrobe_Program
                         case "-w":
                             newSeasons.Add("Winter");
                             break;
-                        case "-f" or "-a":
+                        case  "-a" or "-f":
                             newSeasons.Add("Autumn");
                             break;
                     }
@@ -52,7 +52,7 @@ namespace Wardrobe_Program
         }
 
         protected override Command GetAllowedCommandFormat() {
-            return new Command { Parameters = { { "-id", "" }, { "-sp", "" }, { "-su", "" }, { "-w", "" }, { "-f", "" } } };
+            return new Command { Parameters = { { "-id", "" }, { "-sp", "" }, { "-su", "" }, { "-w", "" }, { "-f", "" }, { "-a", "" } } };
         }
     }
 }

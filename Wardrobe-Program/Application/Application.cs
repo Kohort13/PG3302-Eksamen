@@ -24,11 +24,17 @@ namespace Wardrobe_Program
             Logger.Instance.Info("Type list-controllers to see all registered commands");
 
             while (_running) {
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 var userInput = Console.ReadLine();
+                Console.ResetColor();
                 if (userInput != null) {
                     Command command = new(userInput);
                     if (Controllers.ContainsKey(command.Keyword)) {
                         Controllers[command.Keyword].Handle(command);
+                    }
+                    else {
+                        UserInterface.Instance.Print($"{command.Keyword} is not a recognized command", ConsoleColor.DarkRed);
+                        UserInterface.Instance.Print("Type list-controllers to see all recognized commands", ConsoleColor.Cyan);
                     }
                 }
             }

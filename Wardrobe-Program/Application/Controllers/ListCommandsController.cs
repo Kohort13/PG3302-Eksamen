@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Wardrobe_Program
 {
@@ -12,7 +13,7 @@ namespace Wardrobe_Program
         
         public void Handle(Command command) {
             foreach (var commandComponent in _availableControllers.Keys) {
-                UserInterface.Instance.Print($"{commandComponent}");
+                UserInterface.Instance.Print($"{commandComponent}", ConsoleColor.DarkGreen);
             } 
         }
 
