@@ -20,7 +20,14 @@ namespace Wardrobe_Program
 
         public void Update(long id, Garment element) {
             var garmentToUpdate = Retrieve(id);
-            garmentToUpdate = element;
+            
+            garmentToUpdate.Name = element.Name;
+            garmentToUpdate.Seasons = element.Seasons;
+            garmentToUpdate.Materials = element.Materials;
+            garmentToUpdate.Brand = element.Brand;
+            garmentToUpdate.Notes = element.Notes;
+            garmentToUpdate.Price = element.Price;
+            garmentToUpdate.Size = element.Size;
         }
 
         private long GetNextId() {
