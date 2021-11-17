@@ -19,10 +19,9 @@ namespace Wardrobe_Program
             if (!ValidateCommand(command)) {
                 return;
             }
-
-            UserInterface.Instance.Print("This should change the garment's season");
+            Logger.Instance.Log("This should change the garment's season");
 			long id = Convert.ToInt64(command.Parameters["-id"]);
-			//Garment garmentToChange = _garmentDao.Retrieve(id);
+			Garment garmentToChange = _garmentDao.Retrieve(id);
             List<string> newSeasons = new();
             {
                 foreach (var key in command.Parameters.Keys) {
@@ -43,8 +42,8 @@ namespace Wardrobe_Program
                 }
             }
 
-            //garmentToChange.Seasons = newSeasons;
-			//UserInterface.Instance.Print($"Garment's seasons is now: {garmentToChange.Seasons}");
+            garmentToChange.Seasons = newSeasons;
+			UserInterface.Instance.Print($"Garment's seasons is now: {garmentToChange.Seasons}");
             Logger.Instance.Log("Garment has new seasons");
 		}
 
