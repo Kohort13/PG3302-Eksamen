@@ -71,11 +71,15 @@ namespace Wardrobe_Program
         }
 
         public override void Help(Command command)
-        {
-            UserInterface.Instance.Print("Use list-garments to see a complete list of all available garments");
+		{
+			UserInterface.Instance.Print("Use list-garments to see a complete list of all available garments");
+            UserInterface.Instance.Print("Params to specify: -stype <filter by given subtype> " +
+				"-brand <filter by given brand> -size <filter by given size> -sp/-su/-fa/-au/-wi <filter by given season> " +
+				"-price > or -price < <filter by values greater than or less than given price>" +
+				"-note <filter by given note>");
         }
 
-        protected override ControllerValidator GetControllerValidator() {
+		protected override ControllerValidator GetControllerValidator() {
             return new ControllerValidator
             {
                 AvailableKeys = new()
@@ -84,7 +88,8 @@ namespace Wardrobe_Program
                     {"-price",(false, true)},
                     {"-size",(false, true)},
                     {"-id",(false, true)},
-                    {"-brand",(false, true)}
+                    { "-note", (false, true) },
+                    { "-brand",(false, true)}
                 }
             };
         }

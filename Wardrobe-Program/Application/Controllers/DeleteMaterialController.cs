@@ -35,7 +35,7 @@ namespace Wardrobe_Program
 
         public override void Help(Command command)
         {
-            UserInterface.Instance.Print("Params: -id <id of garment to change> -matID <id of material>");
+            UserInterface.Instance.Print("Params: -id <id of garment to change> -matId <id of material>");
         }
 
         protected override ControllerValidator GetControllerValidator() {
