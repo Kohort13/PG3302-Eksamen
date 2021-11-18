@@ -7,8 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ChangeSeaso" />
-    <None Remove="NewFile1.txt" />
+    <None Remove="Resources\Goodbye-messages.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Goodbye-messages.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace Wardrobe_Program
 {
@@ -24,16 +27,8 @@ namespace Wardrobe_Program
 
         private static string GoodbyeMessage {
             get {
-                string[] options =
-                {
-                    "Goodbye!",
-                    "Ciao!",
-                    "Adiós!",
-                    "Don't forget to be awesome!",
-                    "Have a profoundly mediocre day!",
-                    "I don't blame you..."
-                };
-                return Utils.PickOne<string>(new Collection<string>(options));
+                var contents = ResourceLoader.ReadResource("Goodbye-messages.txt").Split('\n');
+                return Utils.PickOne<string>(new Collection<string>(contents));
             }
         }
     }
