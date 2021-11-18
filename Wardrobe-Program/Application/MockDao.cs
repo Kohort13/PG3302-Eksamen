@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Wardrobe_Program
@@ -14,6 +15,22 @@ namespace Wardrobe_Program
 
         public List<Garment> ListAll() {
             return _data;
+        }
+
+        public List<Garment> ListSome(params Predicate<Garment>[] matchers) {
+            List<Garment> filteredData = new();
+            foreach (var garment in _data) {
+                bool shouldAdd = true;
+                foreach (var predicate in matchers) {
+                    if (predicate(garment)) continue;
+                    shouldAdd = false;
+                    break;
+                }
+                if (shouldAdd) {
+                    filteredData.Add(garment);
+                }
+            }
+            return filteredData;
         }
 
         public void Insert(Garment element) {
