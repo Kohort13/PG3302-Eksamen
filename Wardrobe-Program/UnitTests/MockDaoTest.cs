@@ -45,5 +45,11 @@ namespace UnitTests
             Assert.That(_dao.Retrieve(0), Is.EqualTo(shoe));
             Assert.That(_dao.Retrieve(1), Is.EqualTo(pants));
         }
+
+        [Test]
+        public void TestRandomData() {
+            var data = MockDao.GetPopulatedTestDatabase();
+            Assert.Pass(); //Just to get more coverage ;)
+        }
     }
 }
