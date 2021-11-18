@@ -61,7 +61,6 @@ namespace Wardrobe_Program
                 Console.Write(message[i]);
             }
             Console.ResetColor();
-
         }
     }
 }

@@ -115,7 +115,7 @@ namespace UnitTests
             _data.Insert(element);
 
             _app.AddController("change-subtype", new ChangeSubtypeController(_data));
-            _app.Controllers["change-name"].Handle(new Command("change-name -id 0 -val Jeans -v"));
+            _app.Controllers["change-subtype"].Handle(new Command("change-subtype -id 0 -val Jeans -v"));
             Assert.That(_data.Retrieve(0).Subtype, Is.EqualTo("Skirt"));
         }
     }
