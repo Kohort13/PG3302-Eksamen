@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Wardrobe_Program
 {
@@ -54,5 +55,25 @@ namespace Wardrobe_Program
         public void Quit() {
             _running = false;
         }
+
+        private Timer _timer;
+
+        private static void SayHello(object state) {
+            Logger.Instance.Log("Hello!");
+        }
+
+        public void StartTimer() {
+            _timer?.Dispose(); //Make sure we dispose of any running timer before starting a new one
+            _timer = new Timer(SayHello, null, 1000, 2000);
+            _timerRunning = true;
+        }
+
+        public void StopTimer() {
+            _timer.Dispose();
+            _timerRunning = false;
+        }
+
+        private bool _timerRunning = false;
+        public bool IsTimerRunning => _timerRunning;
     }
 }

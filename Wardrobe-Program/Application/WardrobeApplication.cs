@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Wardrobe_Program
 {
@@ -30,11 +32,14 @@ namespace Wardrobe_Program
             app.AddController("change-note", new ChangeNoteController(data));
 			app.AddController("list-garments", new ListGarmentsController(data));
 
+            app.AddController("say-hello", new SayHelloController(app));
+
             app.AddController("--help", new ListCommandsController(app.Controllers));
             app.AddController("cls", new ClearScreenController());
             app.AddController("exit", new QuitController(app));
 
-            app.RunApplication();
+            Task mainLoop = Task.Run(() => app.RunApplication());
+            mainLoop.Wait();
         }
     }
 }
