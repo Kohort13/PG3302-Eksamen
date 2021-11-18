@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 
 namespace Wardrobe_Program
 {
@@ -17,6 +18,10 @@ namespace Wardrobe_Program
 
         public static T PickOne<T>(Collection<T> options) {
             return options[new Random().Next(options.Count)];
+        }
+
+        public static string RemoveNonDigits(string toRemoveFrom) {
+            return Regex.Replace(toRemoveFrom, "[^0-9.]", "");
         }
     }
 }
