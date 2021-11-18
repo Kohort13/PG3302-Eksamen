@@ -22,6 +22,11 @@ namespace Wardrobe_Program
             UserInterface.Instance.Print($"Garment size is now: {garmentToChange.Size}");
         }
 
+        public override void Help(Command command) {
+            UserInterface.Instance.Print("Params: -id <id of garment to change> -val <garment size>");
+        }
+
+
         protected override ControllerValidator GetControllerValidator()
         {
             return new ControllerValidator

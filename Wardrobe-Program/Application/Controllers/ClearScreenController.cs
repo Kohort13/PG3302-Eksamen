@@ -15,5 +15,9 @@
 
         public ClearScreenController() : base("Clears the screen") {
         }
+
+        public override void Help(Command command) {
+            UserInterface.Instance.Print("No Params, it just clears the screen");
+        }
     }
 }

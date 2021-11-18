@@ -23,6 +23,11 @@ namespace Wardrobe_Program
             _garmentDao.Delete(id);
         }
 
+        public override void Help(Command command)
+        {
+            UserInterface.Instance.Print("Params: -id <id of garment you want to delete>");
+        }
+
         protected override ControllerValidator GetControllerValidator()
         {
             return new ControllerValidator

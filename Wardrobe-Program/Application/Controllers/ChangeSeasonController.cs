@@ -43,8 +43,10 @@ namespace Wardrobe_Program
 		}
 
         public override void Help(Command command) {
-            throw new NotImplementedException();
+            UserInterface.Instance.Print(
+                "Params: -id <id of garment to change> -sp (spring) -su (summer) -au (autumn) -fa (fall) -wi (winter)");
         }
+
 
         protected override ControllerValidator GetControllerValidator() {
             return new ControllerValidator

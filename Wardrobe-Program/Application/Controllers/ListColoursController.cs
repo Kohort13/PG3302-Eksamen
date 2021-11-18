@@ -22,6 +22,11 @@ namespace Wardrobe_Program
             }
         }
 
+        public override void Help(Command command)
+        {
+            UserInterface.Instance.Print("Use list-colours to see a complete list of all available colours and shades");
+        }
+
         protected override ControllerValidator GetControllerValidator()
         {
             return new ControllerValidator

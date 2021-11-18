@@ -6,9 +6,7 @@ namespace Wardrobe_Program
     {
         public abstract void Handle(Command command);
 
-        public virtual void Help(Command command) {
-            throw new NotImplementedException();
-        }
+        public abstract void Help(Command command);
 
         private protected virtual bool ValidateCommand(Command command) {
             return GetControllerValidator().Validate(command);

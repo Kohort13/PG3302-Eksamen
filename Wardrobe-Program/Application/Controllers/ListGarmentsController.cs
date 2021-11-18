@@ -15,8 +15,7 @@ namespace Wardrobe_Program
             if (!ValidateCommand(command)) return;
             if (command.Parameters.Keys.Count == 0) {
                 var garments = _availableGarments.ListAll();
-                foreach (var garment in garments)
-                {
+                foreach (var garment in garments) {
                     UserInterface.Instance.Print($"{garment}");
                 }
             }
@@ -69,6 +68,11 @@ namespace Wardrobe_Program
                     UserInterface.Instance.Print($"{garment}");
                 }
             }
+        }
+
+        public override void Help(Command command)
+        {
+            UserInterface.Instance.Print("Use list-garments to see a complete list of all available garments");
         }
 
         protected override ControllerValidator GetControllerValidator() {

@@ -17,8 +17,9 @@ namespace Wardrobe_Program
             }
         }
 
-        public override void Help(Command command) {
-            throw new System.NotImplementedException();
+        public override void Help(Command command)
+        {
+            UserInterface.Instance.Print("Use --help to see available commands");
         }
 
         protected override ControllerValidator GetControllerValidator() {

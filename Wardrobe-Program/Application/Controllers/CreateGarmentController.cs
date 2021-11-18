@@ -55,6 +55,10 @@ namespace Wardrobe_Program
             UserInterface.Instance.Print($"New garment is: {newGarment}");
         }
 
+        public override void Help(Command command) {
+            UserInterface.Instance.Print("Takes you through the steps of creating a new garment. Is ez-pz-lm-sqzy :)");
+        }
+
         protected override ControllerValidator GetControllerValidator() {
             return new ControllerValidator
             {

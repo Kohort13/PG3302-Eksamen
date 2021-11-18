@@ -33,6 +33,11 @@ namespace Wardrobe_Program
             UserInterface.Instance.Print($"You have deleted: {materialToDelete} from {garmentToChange}");
         }
 
+        public override void Help(Command command)
+        {
+            UserInterface.Instance.Print("Params: -id <id of garment to change> -matID <id of material>");
+        }
+
         protected override ControllerValidator GetControllerValidator() {
             return new ControllerValidator
             {
