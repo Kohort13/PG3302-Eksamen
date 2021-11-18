@@ -30,7 +30,14 @@ namespace Wardrobe_Program
                     matchers.Add(g => g.Size.Contains(command.Parameters["-size"]));
                 } if (command.Parameters.ContainsKey("-note")) {
                     matchers.Add(g => g.Note.Contains(command.Parameters["-note"]));
+                } if (command.Parameters.ContainsKey("-id")) {
+                    try {
+                        matchers.Add(g => g.Id == Convert.ToInt64(command.Parameters["-id"]));
+                    } catch(Exception){
+                        UserInterface.Instance.Print("Invalid ID passed in!");
+                    }
                 }
+
                 if (command.Parameters.ContainsKey("-price"))
                 {
                     int firstDigitPos = command.Parameters["-price"].IndexOfAny(new[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' });
@@ -56,7 +63,6 @@ namespace Wardrobe_Program
                     }
                 }
 
-
                 var garments = _availableGarments.ListSome(matchers.ToArray());
                 foreach (var garment in garments)
                 {
@@ -73,6 +79,7 @@ namespace Wardrobe_Program
                     {"-type",(false, true)},
                     {"-price",(false, true)},
                     {"-size",(false, true)},
+                    {"-id",(false, true)},
                     {"-brand",(false, true)}
                 }
             };
