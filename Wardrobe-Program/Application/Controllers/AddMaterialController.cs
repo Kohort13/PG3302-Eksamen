@@ -34,6 +34,11 @@ namespace Wardrobe_Program
             _garmentDao.Update(id, garmentToChange);
         }
 
+        public override void Help(Command command) {
+            UserInterface.Instance.Print("Params: -id <id to change> -col <id of colour> -sha <id of shade> -fab <name of fabric>");
+            UserInterface.Instance.Print("Use list-colours to see available colour and shade id's");
+        }
+
         protected override ControllerValidator GetControllerValidator() {
             return new ControllerValidator
             {

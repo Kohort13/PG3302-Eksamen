@@ -68,7 +68,7 @@ namespace Wardrobe_Program
                 };
                 Accessory garment = new()
                 {
-                    Subtype = Utils.PickOne(new Collection<string> { "A name", "Another name", "Yet another name", "Bob" }),
+                    Subtype = Utils.PickOne(new Collection<string> { "Necklace", "Belt", "Watch", "Scarf" }),
                     Brand = Utils.PickOne(new Collection<string> { "Gucci", "D&G", "YSL", "Hugo Boss" }),
                     Price = Utils.PickOne(new Collection<float> { 99, 249, 899, 499 }),
                     Seasons = Utils.PickOne<List<string>>(new Collection<List<string>>(seasons))

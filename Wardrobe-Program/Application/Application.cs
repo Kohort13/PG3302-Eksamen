@@ -34,8 +34,13 @@ namespace Wardrobe_Program
                     UserInterface.Instance.ClearScreen();
 
                     if (Controllers.ContainsKey(command.Keyword) && command.Parameters.ContainsKey("-h")) {
-                        Logger.Instance.Warning($"NOT IMPLEMENTED! - Should list available params for command: {command.Keyword}");
-                        //Controllers[command.Keyword].Help(command); //TODO - This works, but technically shouldn't be Application's responsibility to call
+                        try {
+                            //TODO - This works, but technically shouldn't be Application's responsibility to call help...
+                            Controllers[command.Keyword].Help(command);
+                        }
+                        catch (NotImplementedException) {
+                            Logger.Instance.Warning($"NOT IMPLEMENTED! - Should list available params for command: {command.Keyword}");
+                        }
                     }
                     else if (Controllers.ContainsKey(command.Keyword)) {
                         Controllers[command.Keyword].Handle(command);

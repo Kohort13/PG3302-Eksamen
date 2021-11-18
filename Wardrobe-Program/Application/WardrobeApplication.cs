@@ -21,11 +21,13 @@ namespace Wardrobe_Program
 
             app.AddController("add-material", new AddMaterialController(data));
             app.AddController("delete-material", new DeleteMaterialController(data));
+            app.AddController("list-colours", new ListColourController());
             app.AddController("change-subtype", new ChangeSubtypeController(data));
             app.AddController("change-price", new ChangePriceController(data));
 			app.AddController("change-size", new ChangeSizeController(data));
 			app.AddController("change-brand", new ChangeBrandController(data));
 			app.AddController("change-season", new ChangeSeasonController(data));
+            app.AddController("change-note", new ChangeNoteController(data));
 			app.AddController("list-garments", new ListGarmentsController(data));
 
             app.AddController("--help", new ListCommandsController(app.Controllers));
