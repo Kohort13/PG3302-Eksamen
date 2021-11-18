@@ -1,5 +1,4 @@
-﻿
-namespace Wardrobe_Program
+﻿namespace Wardrobe_Program
 {
     public interface IController
     {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Wardrobe_Program
+﻿namespace Wardrobe_Program
 {
     class WardrobeApplication
     {
