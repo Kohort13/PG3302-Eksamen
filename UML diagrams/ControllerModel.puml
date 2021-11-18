@@ -9,11 +9,16 @@
     note bottom: Parses user input as string in constructor
 
     interface IController{
-        + handle(Command)
+        + handle(Command): void
+        + help(Command): void
+        + <<Property>>Description: string
     }
 
     abstract class AbstractController implements IController{
         # GetAllowedCommandFormat(): Command
+        # {abstract} GetControllerValidator(): ControllerValidator
+        # GetId(Command): bool
+        - ValidateCommand(Command): bool        
     }
 
     IController -left- Command: uses >
@@ -21,5 +26,12 @@
     class ChangeColourController extends AbstractController{
         + handle(Command)
     }
+
+    class ControllerValidator{
+        + validate(Command): bool
+        + <<Property>> AvailableKeys: Dictionary<string, (bool, bool)>
+        - getNumRequiredParams(): int
+    }
+    AbstractController::GetControllerValidator -- ControllerValidator: > returns
     
 @enduml

@@ -1,0 +1,22 @@
+@startuml ControllerSequence
+title Sequence diagram for ListGarmentsController
+actor User
+
+User -> Application: "list-garments -stype Jacket"
+Application -> Command: "list-garments -stype Jacket"
+Application <-- Command: command
+Application -> Controllers: ContainsKey(command.Keyword)
+Application <-- Controllers: ListGarmentsController
+|||
+Application -> ListGarmentsController: Handle()
+ListGarmentsController -> ListGarmentsController: Validate(command)
+
+note left
+If this fails, Handle() 
+will terminate execution
+end note
+
+ListGarmentsController -> UserInterface: Generates output...
+User <-- UserInterface: "ID: 0 - Type: ...\n ID: 1 - Type: ..."
+
+@enduml
