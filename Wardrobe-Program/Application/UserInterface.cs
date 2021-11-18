@@ -7,6 +7,7 @@ namespace Wardrobe_Program
     {
         #region Singleton logic
         public static UserInterface Instance { get { return Nested._instance; } }
+        public ConsoleColor InputColor => ConsoleColor.Gray;
 
         private class Nested
         {
