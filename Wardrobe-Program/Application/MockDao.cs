@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Reflection.Metadata;
 
 namespace Wardrobe_Program
@@ -37,7 +39,19 @@ namespace Wardrobe_Program
         public static MockDao GetPopulatedTestDatabase() {
             MockDao data = new();
             for (int i = 0; i < 15; i++) {
-                data.Insert(new Accessory{Name = "A name", Seasons = {"Winter", "Summer"}});
+                Accessory garment = new();
+                garment.Name = Utils.PickOne(new Collection<string> { "A name", "Another name", "Yet another name", "Bob" });
+                garment.Brand = Utils.PickOne(new Collection<string> { "Gucci", "D&G", "YSL", "Hugo Boss" });
+                garment.Price = Utils.PickOne(new Collection<float> { 99, 249, 899, 499 });
+                var seasons = new List<List<string>>
+                {
+                    new() { "Winter", "Spring" },
+                    new() { "Summer", "Autumn" },
+                    new() { "Summer" }
+                };
+
+                garment.Seasons = Utils.PickOne<List<string>>(new Collection<List<string>>(seasons));
+                data.Insert(garment);
             }
             return data;
         }
