@@ -30,26 +30,6 @@ namespace Wardrobe_Program
             }
 
             return true;
-
-            /*
-            foreach (var (availableKey, valueTuple) in AvailableKeys)
-            {
-                bool isValidKey = false;
-                foreach (var (key, value) in command.Parameters) {
-                    if (key != availableKey) continue;
-                    if (value == "" && valueTuple.needsParams)
-                    {
-                        Logger.Instance.Error($"Param {key} needs a value passed in!");
-                        return false;
-                    }
-                    isValidKey = true;
-                }
-                if (isValidKey) continue;
-                Logger.Instance.Error("Incorrect format of command!");
-                return false;
-            }*/
-            
-            //return true;
         }
 
         private int GetNumRequiredParams() {
