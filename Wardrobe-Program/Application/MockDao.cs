@@ -47,13 +47,11 @@ namespace Wardrobe_Program
                 };
                 Accessory garment = new()
                 {
-                    Name = Utils.PickOne(new Collection<string>
-                        { "A name", "Another name", "Yet another name", "Bob" }),
+                    Name = Utils.PickOne(new Collection<string> { "A name", "Another name", "Yet another name", "Bob" }),
                     Brand = Utils.PickOne(new Collection<string> { "Gucci", "D&G", "YSL", "Hugo Boss" }),
                     Price = Utils.PickOne(new Collection<float> { 99, 249, 899, 499 }),
                     Seasons = Utils.PickOne<List<string>>(new Collection<List<string>>(seasons))
                 };
-
                 data.Insert(garment);
             }
             return data;
