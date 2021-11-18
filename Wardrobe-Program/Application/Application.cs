@@ -31,13 +31,13 @@ namespace Wardrobe_Program
                 if (userInput != null)
                 {
                     Command command = new(userInput);
+                    UserInterface.Instance.ClearScreen();
+
                     if (Controllers.ContainsKey(command.Keyword) && command.Parameters.ContainsKey("-h")) {
-                        UserInterface.Instance.ClearScreen();
                         Logger.Instance.Warning($"NOT IMPLEMENTED! - Should list available params for command: {command.Keyword}");
                         //Controllers[command.Keyword].Help(command); //TODO - This works, but technically shouldn't be Application's responsibility to call
                     }
                     else if (Controllers.ContainsKey(command.Keyword)) {
-                        UserInterface.Instance.ClearScreen();
                         Controllers[command.Keyword].Handle(command);
                     } else {
                         UserInterface.Instance.Print($"{command.Keyword} is not a recognized command", ConsoleColor.DarkRed);
