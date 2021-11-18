@@ -14,7 +14,9 @@ namespace Wardrobe_Program
         public string Notes { get; set; }
 
         public override string ToString() {
-	        return $"Item ID: {Id} - Name: {Name} - Purchase price: {Price} " +
+            string type = GetType().FullName;
+            type = type.Substring(type.LastIndexOf('.')+1);
+	        return $"Item ID: {Id} - Type: {type} - Name: {Name} - Purchase price: {Price} " +
                    $"- Size: {Size} - Brand: {Brand} - Seasons: {Utils.ListToStringWithSeparator(Seasons, ",")} " +
                    $"- Materials: {Utils.ListToStringWithSeparator(Materials, ",")} - Notes: {Notes}";
         }
