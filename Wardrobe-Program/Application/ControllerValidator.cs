@@ -25,7 +25,7 @@ namespace Wardrobe_Program
                     isValidKey = true;
                 }
                 if (isValidKey) continue;
-                Logger.Instance.Error($"Param {key} needs a value passed in!");
+                Logger.Instance.Error($"Param {key} is not a valid parameter!");
                 return false;
             }
 
@@ -35,7 +35,7 @@ namespace Wardrobe_Program
         private int GetNumRequiredParams() {
             int result = 0;
             foreach (var availableKey in AvailableKeys) {
-                if (availableKey.Value.needsParams) {
+                if (availableKey.Value.isRequired) {
                     result++;
                 }
             }
