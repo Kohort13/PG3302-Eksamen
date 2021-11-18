@@ -24,7 +24,7 @@ namespace Wardrobe_Program
             UserInterface.Instance.Print("Welcome to the wardrobe manager!", ConsoleColor.DarkGreen);
 
             do {
-                UserInterface.Instance.Print("Type list-controllers to see all registered commands");
+                UserInterface.Instance.Print("Type --help to see all registered commands", ConsoleColor.Cyan);
                 Console.ForegroundColor = UserInterface.Instance.InputColor;
                 var userInput = Console.ReadLine();
                 Console.ResetColor();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Wardrobe_Program
 {
@@ -33,7 +34,7 @@ namespace Wardrobe_Program
                     "Have a profoundly mediocre day!",
                     "I don't blame you..."
                 };
-                return options[new Random().Next(options.Length)];
+                return Utils.PickOne<string>(new Collection<string>(options));
             }
         }
     }
