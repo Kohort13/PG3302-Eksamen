@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 
 namespace Wardrobe_Program
 {
@@ -38,6 +39,29 @@ namespace Wardrobe_Program
 
         public string ReadLine() {
             return Console.ReadLine().Trim();
+        }
+
+        public void PrintRainbow(string message, bool skipSpaces) {
+            List<ConsoleColor> colours = new()
+            {
+                ConsoleColor.Red, ConsoleColor.DarkYellow, ConsoleColor.Yellow, ConsoleColor.Green, ConsoleColor.Cyan,
+                ConsoleColor.DarkBlue, ConsoleColor.DarkMagenta
+            };
+            int colourInc = 0;
+            for (int i = 0; i < message.Length; i++) {
+                if (skipSpaces) {
+                    if (message[i] != ' ') {
+                        Console.ForegroundColor = colours[colourInc % colours.Count];
+                        colourInc++;
+                    } 
+                } else {
+                    Console.ForegroundColor = colours[colourInc % colours.Count];
+                    colourInc++;
+                }
+                Console.Write(message[i]);
+            }
+            Console.ResetColor();
+
         }
     }
 }

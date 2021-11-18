@@ -8,11 +8,19 @@
 
   <ItemGroup>
     <None Remove="Resources\Goodbye-messages.txt" />
+    <None Remove="Resources\sad-smiley.txt" />
+    <None Remove="Resources\smiley.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Goodbye-messages.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\sad-smiley.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\smiley.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
 

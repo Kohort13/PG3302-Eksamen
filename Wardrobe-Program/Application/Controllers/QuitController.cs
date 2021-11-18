@@ -14,7 +14,8 @@ namespace Wardrobe_Program
         }
 
         public override void Handle(Command command) {
-            UserInterface.Instance.Print($"Thank you for managing your clothes.\n\n{GoodbyeMessage}", ConsoleColor.DarkCyan);
+            UserInterface.Instance.PrintRainbow($"Thank you for managing your clothes.\n\n{GoodbyeMessage}", true);
+            UserInterface.Instance.PrintRainbow($"{ResourceLoader.ReadResource("sad-smiley.txt")}", true);
             _app.Quit();
         }
 
