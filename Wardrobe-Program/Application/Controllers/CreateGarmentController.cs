@@ -21,8 +21,8 @@ namespace Wardrobe_Program
             }
 
             var cleanedInputId = Utils.RemoveNonDigits(UserInterface.Instance.ReadLine());
-            if (cleanedInputId.Length == 0) {
-                UserInterface.Instance.Print("Not a valid id!");
+            if (cleanedInputId.Length is < 0 or > 5 ) {
+                UserInterface.Instance.Print("Looks like someone's being cheeky... This isn't a valid id, is it?", ConsoleColor.DarkRed);
                 return;
             }
             int garmentId = Convert.ToInt32(cleanedInputId);
