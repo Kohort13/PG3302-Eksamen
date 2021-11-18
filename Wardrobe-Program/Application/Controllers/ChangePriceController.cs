@@ -14,7 +14,8 @@ namespace Wardrobe_Program
         //Assumes that an id is given as first parameter, and price is given as second parameter, i.e. "change-price 7 599"
         public override void Handle(Command command)
         {
-            long id = Convert.ToInt64(command.Parameters["-id"]);
+            if (!ValidateCommand(command)) return;
+            if (!GetId(command, out var id)) return;
             Garment garmentToChange = _garmentDao.Retrieve(id);
             garmentToChange.Price = Convert.ToSingle(command.Parameters["-val"]);
             UserInterface.Instance.Print($"Garment price is now: {garmentToChange.Price}");

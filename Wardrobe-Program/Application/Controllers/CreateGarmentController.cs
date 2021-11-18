@@ -20,28 +20,30 @@ namespace Wardrobe_Program
                 UserInterface.Instance.Print($"ID: {i} - {_availableFactories[i].GarmentType}");
             }
 
-            var cleanedInputId = Utils.RemoveNonDigits(UserInterface.Instance.ReadLine());
-            if (cleanedInputId.Length is < 0 or > 5 ) {
+            int typeId;
+            try {
+                typeId = Convert.ToInt32(UserInterface.Instance.ReadLine());
+                typeId = Math.Clamp(typeId, 0, _availableFactories.Count - 1);
+            } catch (Exception) {
                 UserInterface.Instance.Print("Looks like someone's being cheeky... This isn't a valid id, is it?", ConsoleColor.DarkRed);
                 return;
             }
-            int garmentId = Convert.ToInt32(cleanedInputId);
-            garmentId = Math.Clamp(garmentId, 0, _availableFactories.Count -1);
-            
-            var newGarment = _availableFactories[garmentId].CreateGarment();
+
+            var newGarment = _availableFactories[typeId].CreateGarment();
 
             UserInterface.Instance.Print("Enter name:");
-            newGarment.Name = UserInterface.Instance.ReadLine();
+            newGarment.Subtype = UserInterface.Instance.ReadLine();
 
             UserInterface.Instance.Print("Enter price:");
-            var cleanedPrice = Utils.RemoveNonDigits(UserInterface.Instance.ReadLine());
-            
-            if (cleanedPrice.Length == 0)
-            {
-                UserInterface.Instance.Print("Not a valid price!");
+            float price;
+            try {
+                price = Convert.ToSingle(UserInterface.Instance.ReadLine());
+            }
+            catch (Exception) {
+                UserInterface.Instance.Print("That's not a valid price...", ConsoleColor.DarkRed);
                 return;
             }
-            newGarment.Price = Convert.ToSingle(cleanedPrice);
+            newGarment.Price = Convert.ToSingle(price);
 
             UserInterface.Instance.Print("Enter size:");
             newGarment.Size = UserInterface.Instance.ReadLine();

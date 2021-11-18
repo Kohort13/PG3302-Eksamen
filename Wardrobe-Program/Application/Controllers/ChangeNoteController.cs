@@ -1,25 +1,22 @@
 ﻿using System;
 
-
 namespace Wardrobe_Program
 {
-    public class ChangeSizeController : AbstractController
+    public class ChangeNoteController : AbstractController
     {
         private readonly IDao<Garment> _garmentDao;
-
-        public ChangeSizeController(IDao<Garment> garmentDao) : base("Changes the size of a garment")
+        public ChangeNoteController(IDao<Garment> garmentDao) : base("Changes the notes of a garment")
         {
             _garmentDao = garmentDao;
         }
 
-        //Assumes that an id is given as first parameter, and name is 
         public override void Handle(Command command)
         {
             if (!ValidateCommand(command)) return;
             if (!GetId(command, out var id)) return;
-            Garment garmentToChange = _garmentDao.Retrieve((id));
-            garmentToChange.Size = command.Parameters["-val"];
-            UserInterface.Instance.Print($"Garment size is now: {garmentToChange.Size}");
+            Garment garmentToChange = _garmentDao.Retrieve(id);
+            garmentToChange.Note = command.Parameters["-val"];
+            UserInterface.Instance.Print($"Garment notes is now: {garmentToChange.Note}");
         }
 
         protected override ControllerValidator GetControllerValidator()
@@ -28,8 +25,8 @@ namespace Wardrobe_Program
             {
                 AvailableKeys =
                 {
-                    {"-id", (true, true)},
-                    {"-val", (true, true)}
+                    { "-id", (true, true) },
+                    { "-val", (true, true) }
                 }
             };
         }

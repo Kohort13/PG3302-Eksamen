@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Wardrobe_Program
 {
@@ -12,28 +13,43 @@ namespace Wardrobe_Program
                 Logger.Instance.Error("Not enough parameters passed in!");
                 return false;
             }
-            foreach (var availableKey in AvailableKeys)
+
+            foreach (var (key, value) in command.Parameters) {
+                bool isValidKey = false;
+                foreach (var (availableKey, valueTuple) in AvailableKeys) {
+                    if (key != availableKey) continue;
+                    if(value == "" && valueTuple.needsParams) {
+                        Logger.Instance.Error($"Param {key} needs a value passed in!");
+                        return false;
+                    }
+                    isValidKey = true;
+                }
+                if (isValidKey) continue;
+                Logger.Instance.Error($"Param {key} needs a value passed in!");
+                return false;
+            }
+
+            return true;
+
+            /*
+            foreach (var (availableKey, valueTuple) in AvailableKeys)
             {
                 bool isValidKey = false;
-                foreach (var kvPair in command.Parameters)
-                {
-                    if (kvPair.Key == availableKey.Key)
+                foreach (var (key, value) in command.Parameters) {
+                    if (key != availableKey) continue;
+                    if (value == "" && valueTuple.needsParams)
                     {
-                        if (kvPair.Value == "" && availableKey.Value.needsParams)
-                        {
-                            Logger.Instance.Error($"Param {kvPair.Key} needs a value passed in!");
-                            return false;
-                        }
-                        isValidKey = true;
+                        Logger.Instance.Error($"Param {key} needs a value passed in!");
+                        return false;
                     }
+                    isValidKey = true;
                 }
-                if (!isValidKey)
-                {
-                    Logger.Instance.Error("Incorrect format of command!");
-                }
-            }
+                if (isValidKey) continue;
+                Logger.Instance.Error("Incorrect format of command!");
+                return false;
+            }*/
             
-            return true;
+            //return true;
         }
 
         private int GetNumRequiredParams() {

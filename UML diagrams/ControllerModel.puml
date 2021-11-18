@@ -1,24 +1,25 @@
 @startuml ControllerModel
     title Controller model
+    hide empty members
     class Command{
-        + <<Property>>CommandComponent: string
+        + <<Property>>Keyword: string
         + <<Property>>Parameters: string[]
         + command(string): Command
     }
     note bottom: Parses user input as string in constructor
 
     interface IController{
-        handle(Command)
+        + handle(Command)
     }
 
-    abstract class AbstractController{
-        
+    abstract class AbstractController implements IController{
+        # GetAllowedCommandFormat(): Command
     }
 
     IController -left- Command: uses >
 
-    class ChangeColourController implements IController{
-        handle(Command)
+    class ChangeColourController extends AbstractController{
+        + handle(Command)
     }
     
 @enduml

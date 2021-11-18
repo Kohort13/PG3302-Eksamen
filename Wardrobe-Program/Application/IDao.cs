@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Wardrobe_Program
 {
@@ -12,5 +8,6 @@ namespace Wardrobe_Program
         public List<T> ListAll();
         public void Insert(T element);
         public void Update(long id, T element);
+        public void Delete(long id);
     }
 }

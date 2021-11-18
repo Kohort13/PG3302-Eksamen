@@ -2,19 +2,20 @@
 
 namespace Wardrobe_Program
 {
-    public class ChangeNameController : AbstractController
+    public class ChangeSubtypeController : AbstractController
     {
         private readonly IDao<Garment> _garmentDao;
-        public ChangeNameController(IDao<Garment> garmentDao) : base("Changes the name of a garment")
+        public ChangeSubtypeController(IDao<Garment> garmentDao) : base("Changes the subtype of a garment")
         {
             _garmentDao = garmentDao;
         }
 
         public override void Handle(Command command) {
-            long id = Convert.ToInt64(command.Parameters["-id"]);
+            if (!ValidateCommand(command)) return;
+            if (!GetId(command, out var id)) return;
             Garment garmentToChange = _garmentDao.Retrieve(id);
-            garmentToChange.Name = command.Parameters["-val"];
-            UserInterface.Instance.Print($"Garment name is now: {garmentToChange.Name}");
+            garmentToChange.Subtype = command.Parameters["-val"];
+            UserInterface.Instance.Print($"Garment name is now: {garmentToChange.Subtype}");
         }
 
         protected override ControllerValidator GetControllerValidator() {

@@ -14,11 +14,9 @@ namespace Wardrobe_Program
 		//change-season -id 44 -sp -su -w -f
 		public override void Handle(Command command)
 		{
-            if (!ValidateCommand(command)) {
-                return;
-            }
-			long id = Convert.ToInt64(command.Parameters["-id"]);
-			Garment garmentToChange = _garmentDao.Retrieve(id);
+            if (!ValidateCommand(command)) return;
+            if (!GetId(command, out var id)) return;
+            Garment garmentToChange = _garmentDao.Retrieve(id);
             List<string> newSeasons = new();
             {
                 foreach (var key in command.Parameters.Keys) {
@@ -29,10 +27,10 @@ namespace Wardrobe_Program
                         case "-su":
                             newSeasons.Add("Summer");
                             break;
-                        case "-w":
+                        case "-wi":
                             newSeasons.Add("Winter");
                             break;
-                        case  "-a" or "-f":
+                        case  "-au" or "-fa":
                             newSeasons.Add("Autumn");
                             break;
                     }

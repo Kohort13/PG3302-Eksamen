@@ -30,7 +30,7 @@
         }
 
         public override string ToString() {
-            return $"Material{{{Colour}, {Shade}}}";
+            return $"Material{{{Shade} {Colour} {Fabric}}}";
         }
     }
 }

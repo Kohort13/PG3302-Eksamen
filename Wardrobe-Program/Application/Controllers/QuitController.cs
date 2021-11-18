@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Reflection;
+﻿using System.Collections.ObjectModel;
 
 namespace Wardrobe_Program
 {
@@ -14,7 +10,7 @@ namespace Wardrobe_Program
         }
 
         public override void Handle(Command command) {
-            UserInterface.Instance.PrintRainbow($"Thank you for managing your clothes.\n\n{GoodbyeMessage}", true);
+            UserInterface.Instance.Print($"Thank you for managing your clothes.\n\n{GoodbyeMessage}");
             UserInterface.Instance.PrintRainbow($"{ResourceLoader.ReadResource("sad-smiley.txt")}", true);
             _app.Quit();
         }

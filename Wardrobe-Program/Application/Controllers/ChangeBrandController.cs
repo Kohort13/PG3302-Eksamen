@@ -12,14 +12,11 @@ namespace Wardrobe_Program
 		}
 
 
-		public override void Handle(Command command)
-		{
-            if (!ValidateCommand(command))
-            {
-                return;
-            }
-            long id = Convert.ToInt64(command.Parameters["-id"]);
-			Garment garmentToChange = _garmentDao.Retrieve(id);
+		public override void Handle(Command command) {
+            if (!ValidateCommand(command)) return;
+            if (!GetId(command, out var id)) return;
+
+            Garment garmentToChange = _garmentDao.Retrieve(id);
 			garmentToChange.Brand = command.Parameters["-val"];
 			UserInterface.Instance.Print($"Garment's brand is now: {garmentToChange.Brand}");
 		}

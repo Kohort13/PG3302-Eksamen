@@ -24,13 +24,20 @@ namespace Wardrobe_Program
         public void Update(long id, Garment element) {
             var garmentToUpdate = Retrieve(id);
             
-            garmentToUpdate.Name = element.Name;
+            garmentToUpdate.Subtype = element.Subtype;
             garmentToUpdate.Seasons = element.Seasons;
             garmentToUpdate.Materials = element.Materials;
             garmentToUpdate.Brand = element.Brand;
-            garmentToUpdate.Notes = element.Notes;
+            garmentToUpdate.Note = element.Note;
             garmentToUpdate.Price = element.Price;
             garmentToUpdate.Size = element.Size;
+        }
+
+        public void Delete(long id) {
+            var idToRemove = _data.FindIndex(garment => garment.Id == id);
+            if (idToRemove != -1) {
+                _data.Remove(_data[idToRemove]);
+            }
         }
 
         public static MockDao GetPopulatedTestDatabase() {
@@ -44,7 +51,7 @@ namespace Wardrobe_Program
                 };
                 Accessory garment = new()
                 {
-                    Name = Utils.PickOne(new Collection<string> { "A name", "Another name", "Yet another name", "Bob" }),
+                    Subtype = Utils.PickOne(new Collection<string> { "A name", "Another name", "Yet another name", "Bob" }),
                     Brand = Utils.PickOne(new Collection<string> { "Gucci", "D&G", "YSL", "Hugo Boss" }),
                     Price = Utils.PickOne(new Collection<float> { 99, 249, 899, 499 }),
                     Seasons = Utils.PickOne<List<string>>(new Collection<List<string>>(seasons))
