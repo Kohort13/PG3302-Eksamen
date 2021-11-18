@@ -49,7 +49,31 @@ namespace UnitTests
         [Test]
         public void TestRandomData() {
             var data = MockDao.GetPopulatedTestDatabase();
+            var allData = data.ListAll();
             Assert.Pass(); //Just to get more coverage ;)
+        }
+
+        [Test]
+        public void TestListSome() {
+            _dao.Insert(new Top{ Subtype = "Cardigan", Price = 300f });
+            _dao.Insert(new Top{ Subtype = "Cardigan", Price = 200f });
+            _dao.Insert(new Top{ Subtype = "Cardigan", Price = 300f });
+            _dao.Insert(new Top{ Subtype = "Cardigan", Price = 200f });
+            _dao.Insert(new Top{ Subtype = "Shirt", Price = 400f });
+
+            Assert.That(_dao.ListSome(g => g.Subtype == "Cardigan").Count, Is.EqualTo(4));
+            Assert.That(_dao.ListSome(g => g.Subtype == "Cardigan", g => g.Price > 200f).Count, Is.EqualTo(2));
+            Assert.That(_dao.ListSome(g => g.Price > 300f).Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void TestDelete() {
+            _dao.Insert(new Top { Subtype = "Cardigan", Price = 300f });
+            _dao.Insert(new Top { Subtype = "Cardigan", Price = 200f });
+            _dao.Insert(new Top { Subtype = "Cardigan", Price = 300f });
+
+            _dao.Delete(2);
+            Assert.That(_dao.ListAll().Count, Is.EqualTo(2));
         }
     }
 }
