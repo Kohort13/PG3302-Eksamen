@@ -22,8 +22,8 @@ namespace Wardrobe_Program
             }
             else {
                 List<Predicate<Garment>> matchers = new();
-                if (command.Parameters.ContainsKey("-type")) {
-                    matchers.Add(g => g.Subtype.Contains(command.Parameters["-type"]));
+                if (command.Parameters.ContainsKey("-stype")) {
+                    matchers.Add(g => g.Subtype.Contains(command.Parameters["-stype"]));
                 } if (command.Parameters.ContainsKey("-brand")) {
                     matchers.Add(g => g.Brand.Contains(command.Parameters["-brand"]));
                 } if (command.Parameters.ContainsKey("-size")) {
@@ -76,7 +76,7 @@ namespace Wardrobe_Program
             {
                 AvailableKeys = new()
                 {
-                    {"-type",(false, true)},
+                    {"-stype",(false, true)},
                     {"-price",(false, true)},
                     {"-size",(false, true)},
                     {"-id",(false, true)},
