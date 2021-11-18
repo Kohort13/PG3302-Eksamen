@@ -26,7 +26,7 @@ namespace Wardrobe_Program
             do {
                 UserInterface.Instance.Print("Type --help to see all registered commands", ConsoleColor.Cyan);
                 Console.ForegroundColor = UserInterface.Instance.InputColor;
-                var userInput = Console.ReadLine();
+                string userInput = UserInterface.Instance.ReadLine();
                 Console.ResetColor();
                 if (userInput != null)
                 {

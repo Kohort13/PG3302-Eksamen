@@ -35,5 +35,9 @@ namespace Wardrobe_Program
         public void ClearScreen() {
             Console.Clear();
         }
+
+        public string ReadLine() {
+            return Console.ReadLine().Trim();
+        }
     }
 }
