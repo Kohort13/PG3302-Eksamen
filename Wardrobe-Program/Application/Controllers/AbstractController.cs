@@ -13,5 +13,13 @@
         }
 
         protected abstract ControllerValidator GetControllerValidator();
+
+        protected readonly string _Description;
+
+        protected AbstractController(string description) {
+            _Description = description;
+        }
+
+        public string Description { get => _Description; }
     }
 }

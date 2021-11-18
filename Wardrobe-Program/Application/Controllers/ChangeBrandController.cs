@@ -6,7 +6,7 @@ namespace Wardrobe_Program
 	{
 		private readonly IDao<Garment> _garmentDao;
 
-		public ChangeBrandController(IDao<Garment> garmentDao)
+		public ChangeBrandController(IDao<Garment> garmentDao) : base("Changes the brand of a garment")
 		{
 			_garmentDao = garmentDao;
 		}
@@ -23,10 +23,6 @@ namespace Wardrobe_Program
 			garmentToChange.Brand = command.Parameters["-val"];
 			UserInterface.Instance.Print($"Garment's brand is now: {garmentToChange.Brand}");
 		}
-
-        public override void Help(Command command) {
-            throw new NotImplementedException();
-        }
 
         protected override ControllerValidator GetControllerValidator() {
             return new ControllerValidator

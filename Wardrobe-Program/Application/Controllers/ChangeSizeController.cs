@@ -7,7 +7,7 @@ namespace Wardrobe_Program
     {
         private readonly IDao<Garment> _garmentDao;
 
-        public ChangeSizeController(IDao<Garment> garmentDao)
+        public ChangeSizeController(IDao<Garment> garmentDao) : base("Changes the size of a garment")
         {
             _garmentDao = garmentDao;
         }

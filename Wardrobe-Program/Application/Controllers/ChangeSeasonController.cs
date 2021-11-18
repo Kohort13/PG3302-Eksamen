@@ -7,11 +7,9 @@ namespace Wardrobe_Program
 	{
 		private readonly IDao<Garment> _garmentDao;
 
-		public ChangeSeasonController(IDao<Garment> garmentDao)
-		{
+		public ChangeSeasonController(IDao<Garment> garmentDao) : base("Changes the season of a given garment") {
 			_garmentDao = garmentDao;
-            
-		}
+        }
 
 		//change-season -id 44 -sp -su -w -f
 		public override void Handle(Command command)

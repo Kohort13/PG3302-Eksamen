@@ -5,7 +5,7 @@ namespace Wardrobe_Program
     public class QuitController : AbstractController
     {
         private readonly Application _app;
-        public QuitController(Application app) {
+        public QuitController(Application app) : base("Quits the application") {
             _app = app;
         }
 

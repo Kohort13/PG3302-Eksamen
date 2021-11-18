@@ -5,5 +5,6 @@ namespace Wardrobe_Program
     {
         public void Handle(Command command);
         public void Help(Command command);
+        public string Description { get; }
     }
 }

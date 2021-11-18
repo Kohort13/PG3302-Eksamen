@@ -6,7 +6,7 @@ namespace Wardrobe_Program
     {
         private readonly IDao<Garment> _availableGarments;
 
-        public ListGarmentsController(IDao<Garment> availableGarments) {
+        public ListGarmentsController(IDao<Garment> availableGarments) : base("Lists the available garments") {
             _availableGarments = availableGarments;
         }
 

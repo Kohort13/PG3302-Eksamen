@@ -7,13 +7,13 @@ namespace Wardrobe_Program
     {
         private readonly Dictionary<string, IController> _availableControllers;
 
-        public ListCommandsController(Dictionary<string, IController> availableControllers) {
+        public ListCommandsController(Dictionary<string, IController> availableControllers) : base("Lists all available controllers in the app") {
             _availableControllers = availableControllers;
         }
 
         public override void Handle(Command command) {
-            foreach (var commandComponent in _availableControllers.Keys) {
-                UserInterface.Instance.Print($"{commandComponent}", ConsoleColor.DarkGreen);
+            foreach (var controller in _availableControllers) {
+                UserInterface.Instance.Print($"{controller.Key.PadRight(20)}{controller.Value.Description}", ConsoleColor.DarkGreen);
             }
         }
 

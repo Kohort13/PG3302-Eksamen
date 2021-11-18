@@ -12,5 +12,8 @@
                 AvailableKeys = new()
             };
         }
+
+        public ClearScreenController() : base("Clears the screen") {
+        }
     }
 }
