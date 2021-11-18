@@ -17,10 +17,6 @@ namespace Wardrobe_Program
             }
         }
 
-        public void Help(Command command) {
-            throw new NotImplementedException();
-        }
-
         protected override ControllerValidator GetControllerValidator() {
             return new ControllerValidator
             {

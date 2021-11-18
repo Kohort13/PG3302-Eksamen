@@ -21,11 +21,6 @@ namespace Wardrobe_Program
             UserInterface.Instance.Print($"Garment size is now: {garmentToChange.Size}");
         }
 
-        public void Help(Command command)
-        {
-            throw new NotImplementedException();
-        }
-
         protected override ControllerValidator GetControllerValidator()
         {
             return new ControllerValidator
