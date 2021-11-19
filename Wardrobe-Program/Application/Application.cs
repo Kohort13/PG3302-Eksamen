@@ -45,6 +45,8 @@ namespace Wardrobe_Program
                 }
                 UserInterface.Instance.Print($"{command.Keyword} is not a recognized command", ConsoleColor.DarkRed);
             } while (_running);
+
+            Thread.Sleep(10000);
         }
 
         public void Quit() {
