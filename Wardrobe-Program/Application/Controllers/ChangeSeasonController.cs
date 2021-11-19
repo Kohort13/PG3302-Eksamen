@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Wardrobe_Program
 {
-	public class ChangeSeasonController : AbstractController
+	public class ChangeSeasonController : AbstractController, IHelpController
 	{
 		private readonly IDao<IGarment> _garmentDao;
 
@@ -42,7 +42,7 @@ namespace Wardrobe_Program
             Logger.Instance.Log("Garment has new seasons");
 		}
 
-        public override void Help(Command command) {
+        public void Help(Command command) {
             UserInterface.Instance.Print(
                 "Params: -id <id of garment to change> -sp (spring) -su (summer) -au (autumn) -fa (fall) -wi (winter)");
         }

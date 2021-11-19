@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Wardrobe_Program
 {
-    public class DeleteGarmentController : AbstractController
+    public class DeleteGarmentController : AbstractController, IHelpController
     {
         private readonly IDao<IGarment> _garmentDao;
 
@@ -23,7 +23,7 @@ namespace Wardrobe_Program
             _garmentDao.Delete(id);
         }
 
-        public override void Help(Command command)
+        public void Help(Command command)
         {
             UserInterface.Instance.Print("Params: -id <id of garment you want to delete>");
         }

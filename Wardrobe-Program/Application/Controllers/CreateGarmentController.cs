@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Wardrobe_Program
 {
-    public class CreateGarmentController : AbstractController
+    public class CreateGarmentController : AbstractController, IHelpController
     {
         private readonly IDao<IGarment> _garmentDao;
         private readonly List<GarmentFactory> _availableFactories;
@@ -55,7 +55,7 @@ namespace Wardrobe_Program
             UserInterface.Instance.Print($"New garment is: {newGarment}");
         }
 
-        public override void Help(Command command) {
+        public void Help(Command command) {
             UserInterface.Instance.Print("Takes you through the steps of creating a new garment. Is ez-pz-lm-sqzy :)");
         }
 

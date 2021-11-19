@@ -27,26 +27,23 @@ namespace Wardrobe_Program
                 Console.ForegroundColor = UserInterface.Instance.InputColor;
                 string userInput = UserInterface.Instance.ReadLine();
                 Console.ResetColor();
-                if (userInput != null)
-                {
-                    Command command = new(userInput);
-                    UserInterface.Instance.ClearScreen();
+                if (userInput == null) continue;
+                Command command = new(userInput);
+                UserInterface.Instance.ClearScreen();
 
-                    if (Controllers.ContainsKey(command.Keyword) && command.Parameters.ContainsKey("-h")) {
-                        try {
-                            //TODO - This works, but technically shouldn't be Application's responsibility to call help...
-                            Controllers[command.Keyword].Help(command);
-                        }
-                        catch (NotImplementedException) {
-                            Logger.Instance.Warning($"NOT IMPLEMENTED! - Should list available params for command: {command.Keyword}");
-                        }
+                if (Controllers.ContainsKey(command.Keyword)) {
+                    var controller = Controllers[command.Keyword];
+                    if (command.Parameters.ContainsKey("-h")) {
+                        if (typeof(IHelpController).IsAssignableFrom(typeof(AbstractController))) continue;
+                        var helpController = (IHelpController)controller;
+                        helpController.Help(command);
+                        continue;
                     }
-                    else if (Controllers.ContainsKey(command.Keyword)) {
-                        Controllers[command.Keyword].Handle(command);
-                    } else {
-                        UserInterface.Instance.Print($"{command.Keyword} is not a recognized command", ConsoleColor.DarkRed);
-                    }
+                        
+                    Controllers[command.Keyword].Handle(command);
+                    continue;
                 }
+                UserInterface.Instance.Print($"{command.Keyword} is not a recognized command", ConsoleColor.DarkRed);
             } while (_running);
         }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Wardrobe_Program
 {
-    class ListGarmentsController : AbstractController
+    class ListGarmentsController : AbstractController, IHelpController
     {
         private readonly IDao<IGarment> _availableGarments;
 
@@ -70,7 +70,7 @@ namespace Wardrobe_Program
             }
         }
 
-        public override void Help(Command command)
+        public void Help(Command command)
 		{
 			UserInterface.Instance.Print("Use list-garments to see a complete list of all available garments");
             UserInterface.Instance.Print("Params to specify: -stype <filter by given subtype> " +

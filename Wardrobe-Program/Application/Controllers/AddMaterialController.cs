@@ -2,7 +2,7 @@
 
 namespace Wardrobe_Program
 {
-    public class AddMaterialController : AbstractController
+    public class AddMaterialController : AbstractController, IHelpController
     {
         private readonly IDao<IGarment> _garmentDao;
 
@@ -34,7 +34,7 @@ namespace Wardrobe_Program
             _garmentDao.Update(id, garmentToChange);
         }
 
-        public override void Help(Command command) {
+        public void Help(Command command) {
             UserInterface.Instance.Print("Params: -id <id of garment to change> -col <id of colour> -sha <id of shade> -fab <name of fabric>");
             UserInterface.Instance.Print("Use list-colours to see available colour and shade id's");
         }

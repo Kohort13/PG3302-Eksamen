@@ -17,11 +17,6 @@ namespace Wardrobe_Program
             }
         }
 
-        public override void Help(Command command)
-        {
-            UserInterface.Instance.Print("Use --help to see available commands");
-        }
-
         protected override ControllerValidator GetControllerValidator() {
             return new ControllerValidator
             {

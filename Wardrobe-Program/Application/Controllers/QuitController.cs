@@ -22,10 +22,6 @@ namespace Wardrobe_Program
             };
         }
 
-        public override void Help(Command command) {
-            UserInterface.Instance.Print("Quitáge");
-        }
-
         private static string GoodbyeMessage {
             get {
                 var contents = ResourceLoader.ReadResource("Goodbye-messages.txt").Split('\n');

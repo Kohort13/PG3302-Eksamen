@@ -2,7 +2,7 @@
 
 namespace Wardrobe_Program
 {
-	public class ChangeBrandController : AbstractController
+	public class ChangeBrandController : AbstractController, IHelpController
 	{
 		private readonly IDao<IGarment> _garmentDao;
 
@@ -21,7 +21,7 @@ namespace Wardrobe_Program
 			UserInterface.Instance.Print($"Garment's brand is now: {garmentToChange.Brand}");
 		}
 
-        public override void Help(Command command) {
+        public void Help(Command command) {
             UserInterface.Instance.Print("Params: -id <id of garment to change> -val <name of brand>");
         }
 

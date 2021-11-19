@@ -2,7 +2,7 @@
 
 namespace Wardrobe_Program
 {
-    public class DeleteMaterialController : AbstractController
+    public class DeleteMaterialController : AbstractController, IHelpController
     {
         private readonly IDao<IGarment> _garmentDao;
 
@@ -33,7 +33,7 @@ namespace Wardrobe_Program
             UserInterface.Instance.Print($"You have deleted: {materialToDelete} from {garmentToChange}");
         }
 
-        public override void Help(Command command)
+        public void Help(Command command)
         {
             UserInterface.Instance.Print("Params: -id <id of garment to change> -matId <id of material>");
         }

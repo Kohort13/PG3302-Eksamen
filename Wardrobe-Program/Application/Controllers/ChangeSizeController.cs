@@ -2,7 +2,7 @@
 
 namespace Wardrobe_Program
 {
-    public class ChangeSizeController : AbstractController
+    public class ChangeSizeController : AbstractController, IHelpController
     {
         private readonly IDao<IGarment> _garmentDao;
 
@@ -21,7 +21,7 @@ namespace Wardrobe_Program
             UserInterface.Instance.Print($"Garment size is now: {garmentToChange.Size}");
         }
 
-        public override void Help(Command command) {
+        public void Help(Command command) {
             UserInterface.Instance.Print("Params: -id <id of garment to change> -val <garment size>");
         }
 

@@ -2,7 +2,7 @@
 
 namespace Wardrobe_Program
 {
-    public class ChangeNoteController : AbstractController
+    public class ChangeNoteController : AbstractController, IHelpController
     {
         private readonly IDao<IGarment> _garmentDao;
         public ChangeNoteController(IDao<IGarment> garmentDao) : base("Changes the notes of a garment")
@@ -19,7 +19,7 @@ namespace Wardrobe_Program
             UserInterface.Instance.Print($"Garment notes is now: {garmentToChange.Note}");
         }
 
-        public override void Help(Command command) {
+        public void Help(Command command) {
             UserInterface.Instance.Print("Params: -id <id of garment to change> -val <your note here>");
         }
 

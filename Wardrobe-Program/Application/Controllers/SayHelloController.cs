@@ -1,6 +1,6 @@
 ﻿namespace Wardrobe_Program
 {
-    public class SayHelloController : AbstractController
+    public class SayHelloController : AbstractController, IHelpController
     {
         private readonly Application _app;
         public SayHelloController(Application app) : base("Starts saying 'Hello' on a new thread") {
@@ -25,7 +25,7 @@
             }
         }
 
-        public override void Help(Command command) {
+        public void Help(Command command) {
             UserInterface.Instance.Print("Starts saying hello every two seconds. We know, it's pretty useless, but at least it's multithreaded!");
         }
 

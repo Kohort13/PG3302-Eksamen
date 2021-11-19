@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Wardrobe_Program
 {
-    class ListColourController : AbstractController
+    class ListColourController : AbstractController, IHelpController
     {
         public ListColourController() : base("Lists all available colours and shades") {
         }
@@ -22,7 +22,7 @@ namespace Wardrobe_Program
             }
         }
 
-        public override void Help(Command command)
+        public void Help(Command command)
         {
             UserInterface.Instance.Print("Use list-colours to see a complete list of all available colours and shades");
         }
