@@ -1,25 +1,34 @@
 @startuml MainProgramModel
-    '!include DatabaseObjectModel.puml!0
-
-    hide empty members    
+    !include DatabaseObjectModel.puml!1
+    
+    title Main application structure
+    hide empty members
+    remove IDao
 
     class WardrobeApplication{
-        - Application
-        + main()
+        + {static} main()
     }
+
+    note right
+    MockDao and Application are instantiated
+    in main(). Any controller that needs
+    a reference to either of them gets it
+    via their constructor 
+    end note
 
     class Application{
-        Commands: Map<string, IController>
+        + <<Property>>Commands: Map<string, IController>
+        - timer: Timer
+        - timerRunning: bool
         + addController(string, IController)
         + runApplication()
+        + quit()
+        + startTimer()
+        + stopTimer()
+        - {static} sayHello()
     }
 
-    class AppSettings{
-        /' showColorNames()
-        darkMode()
-        lightMode() '/
-    }
-
-    Main o-- Application  
+    WardrobeApplication o-- Application  
+    WardrobeApplication o-- MockDao
 
 @enduml

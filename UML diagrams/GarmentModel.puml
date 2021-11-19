@@ -2,19 +2,26 @@
     hide empty members
 
     abstract Garment{
-        name: string
-        price: double
-        size: string
-        brand: string
-        seasons: string[]
-        materials: Material[]
-        notes: string
+        + <<Property>>name: string
+        + <<Property>>price: double
+        + <<Property>>size: string
+        + <<Property>>brand: string
+        + <<Property>>seasons: string[]
+        + <<Property>>materials: Material[]
+        + <<Property>>notes: string
     }
 
     class Material{
         colour: Colour
         shade: Shade
         fabric: string
+    }
+
+    enum Shade{
+        DARK
+        BRIGHT
+        NEON
+        PASTEL
     }
 
     enum Colour{
@@ -30,16 +37,11 @@
         WHITE
         PINK
     }
-    enum Shade{
-        DARK
-        BRIGHT
-        NEON
-        PASTEL
-    }
+    
 
     Garment o-right- Material: Aggregation
-    Material -- Colour
-    Material -- Shade
+    Material::Shade -- Shade
+    Material::Colour -- Colour
 
     class Shoe implements Garment
     class Top implements Garment

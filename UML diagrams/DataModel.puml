@@ -1,6 +1,11 @@
 @startuml Database
 
 title Wardrobe database model
+note as Info
+This shows the intended structure of the 
+backend database, though it was never
+implemented
+end note
 
 object Garment{
     id **PK**

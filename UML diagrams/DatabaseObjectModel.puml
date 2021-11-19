@@ -3,14 +3,35 @@
     
     skinparam groupInheritance 2
     hide empty members
-    abstract AbstractDao{
-        - DataSource
-        # insert()
-        # update()
-        # retrieve()
-        # listAll()
-        # delete()
+
+    !include DatabaseObjectModel.puml!1
+    interface IDao<T>{
+        + insert()
+        + update(id: long, T)
+        + retrieve(id: long)
+        + listAll()
+        + listSome(Predicate)
+        + delete(id: long)
     }
+    abstract AbstractDao<T> implements IDao{
+        - DataSource
+        # insert(): void
+        # update(): void
+        # retrieve(): T
+        # listAll(): List<T>
+        # listSome(): List<T>
+        # delete(): void
+    } 
+
+    
+
+    note left of AbstractDao
+    This class was never implemented
+    in the actual project, but would have
+    been the class used to interface with
+    an actual database
+    end note
+
     class GarmentDao extends AbstractDao
     class SizeDao extends AbstractDao
     class BrandDao extends AbstractDao
@@ -21,4 +42,16 @@
     class GarmentToOutfitDao extends AbstractDao
     class WearDao extends AbstractDao
     class ColourDao extends AbstractDao
+@enduml
+@startuml MockDao
+
+    class MockDao<Garment> implements IDao{ 
+        - data: List<data>
+        + insert(): void
+        + update(): void
+        + retrieve(): Garment
+        + listAll(): List<Garment>
+        + listSome(): List<Garment>
+        + delete(): void
+    }
 @enduml
