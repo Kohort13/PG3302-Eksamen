@@ -42,7 +42,7 @@ namespace Wardrobe_Program
             Logger.Instance.Log("Garment has new seasons");
 		}
 
-        public void Help(Command command) {
+        public void Help() {
             UserInterface.Instance.Print(
                 "Params: -id <id of garment to change> -sp (spring) -su (summer) -au (autumn) -fa (fall) -wi (winter)");
         }

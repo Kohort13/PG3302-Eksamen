@@ -22,7 +22,7 @@ namespace Wardrobe_Program
             }
         }
 
-        public void Help(Command command)
+        public void Help()
         {
             UserInterface.Instance.Print("Use list-colours to see a complete list of all available colours and shades");
         }

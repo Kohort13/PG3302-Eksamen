@@ -81,7 +81,7 @@ namespace UnitTests
 
             _app.AddController("delete-garment", new DeleteGarmentController(_data));
             _app.Controllers["delete-garment"].Handle(new Command("delete-garment -id 2"));
-            Assert.That(_data.Retrieve(2), Is.Null);
+            Assert.That(_data.Retrieve(2), Is.TypeOf(typeof(NullGarment)));
         }
 
         [Test]

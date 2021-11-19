@@ -55,7 +55,7 @@ namespace Wardrobe_Program
             UserInterface.Instance.Print($"New garment is: {newGarment}");
         }
 
-        public void Help(Command command) {
+        public void Help() {
             UserInterface.Instance.Print("Takes you through the steps of creating a new garment. Is ez-pz-lm-sqzy :)");
         }
 

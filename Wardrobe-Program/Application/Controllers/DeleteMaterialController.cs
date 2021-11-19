@@ -33,7 +33,7 @@ namespace Wardrobe_Program
             UserInterface.Instance.Print($"You have deleted: {materialToDelete} from {garmentToChange}");
         }
 
-        public void Help(Command command)
+        public void Help()
         {
             UserInterface.Instance.Print("Params: -id <id of garment to change> -matId <id of material>");
         }

@@ -36,7 +36,7 @@ namespace Wardrobe_Program
                     if (command.Parameters.ContainsKey("-h")) {
                         if (typeof(IHelpController).IsAssignableFrom(typeof(AbstractController))) continue;
                         var helpController = (IHelpController)controller;
-                        helpController.Help(command);
+                        helpController.Help();
                         continue;
                     }
                         

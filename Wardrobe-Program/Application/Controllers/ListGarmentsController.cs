@@ -70,7 +70,7 @@ namespace Wardrobe_Program
             }
         }
 
-        public void Help(Command command)
+        public void Help()
 		{
 			UserInterface.Instance.Print("Use list-garments to see a complete list of all available garments");
             UserInterface.Instance.Print("Params to specify: -stype <filter by given subtype> " +

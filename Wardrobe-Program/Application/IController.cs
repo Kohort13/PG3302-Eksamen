@@ -8,6 +8,6 @@
 
     public interface IHelpController : IController
     {
-        public void Help(Command command);
+        public void Help();
     }
 }

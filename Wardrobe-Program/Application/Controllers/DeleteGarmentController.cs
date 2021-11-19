@@ -23,7 +23,7 @@ namespace Wardrobe_Program
             _garmentDao.Delete(id);
         }
 
-        public void Help(Command command)
+        public void Help()
         {
             UserInterface.Instance.Print("Params: -id <id of garment you want to delete>");
         }

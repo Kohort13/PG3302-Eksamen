@@ -18,7 +18,7 @@ namespace Wardrobe_Program
             UserInterface.Instance.Print($"Garment name is now: {garmentToChange.Subtype}");
         }
 
-        public void Help(Command command) {
+        public void Help() {
             UserInterface.Instance.Print("Params: -id <id of garment to change> -val <garment subtype>");
         }
 

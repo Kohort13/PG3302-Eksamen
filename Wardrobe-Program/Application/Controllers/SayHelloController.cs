@@ -25,7 +25,7 @@
             }
         }
 
-        public void Help(Command command) {
+        public void Help() {
             UserInterface.Instance.Print("Starts saying hello every two seconds. We know, it's pretty useless, but at least it's multithreaded!");
         }
 

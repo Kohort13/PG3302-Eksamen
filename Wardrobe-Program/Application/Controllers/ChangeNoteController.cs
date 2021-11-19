@@ -19,7 +19,7 @@ namespace Wardrobe_Program
             UserInterface.Instance.Print($"Garment notes is now: {garmentToChange.Note}");
         }
 
-        public void Help(Command command) {
+        public void Help() {
             UserInterface.Instance.Print("Params: -id <id of garment to change> -val <your note here>");
         }
 

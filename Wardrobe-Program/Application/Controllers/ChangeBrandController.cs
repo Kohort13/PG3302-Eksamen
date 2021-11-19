@@ -21,7 +21,7 @@ namespace Wardrobe_Program
 			UserInterface.Instance.Print($"Garment's brand is now: {garmentToChange.Brand}");
 		}
 
-        public void Help(Command command) {
+        public void Help() {
             UserInterface.Instance.Print("Params: -id <id of garment to change> -val <name of brand>");
         }
 

@@ -10,8 +10,10 @@
 
     interface IController{
         + handle(Command): void
-        + help(Command): void
         + <<Property>>Description: string
+    }
+    interface IHelpController{
+        + help(Command): void
     }
 
     abstract class AbstractController implements IController{
@@ -25,7 +27,10 @@
 
     class ChangeColourController extends AbstractController{
         + handle(Command)
+        + help()
     }
+    IHelpController <|.. ChangeColourController
+
 
     class ControllerValidator{
         + validate(Command): bool
