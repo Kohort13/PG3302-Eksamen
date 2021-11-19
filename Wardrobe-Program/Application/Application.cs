@@ -9,8 +9,6 @@ namespace Wardrobe_Program
         private bool _running;
         public Dictionary<string, IController> Controllers { get; }
 
-        public IDao<Garment> Database { get; set; }
-
         public Application() {
             Controllers = new Dictionary<string, IController>();
         }

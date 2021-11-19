@@ -1,13 +1,12 @@
 ﻿using System;
 
-
 namespace Wardrobe_Program
 {
     public class ChangeSizeController : AbstractController
     {
-        private readonly IDao<Garment> _garmentDao;
+        private readonly IDao<IGarment> _garmentDao;
 
-        public ChangeSizeController(IDao<Garment> garmentDao) : base("Changes the size of a garment")
+        public ChangeSizeController(IDao<IGarment> garmentDao) : base("Changes the size of a garment")
         {
             _garmentDao = garmentDao;
         }
@@ -17,7 +16,7 @@ namespace Wardrobe_Program
         {
             if (!ValidateCommand(command)) return;
             if (!GetId(command, out var id)) return;
-            Garment garmentToChange = _garmentDao.Retrieve((id));
+            var garmentToChange = _garmentDao.Retrieve((id));
             garmentToChange.Size = command.Parameters["-val"];
             UserInterface.Instance.Print($"Garment size is now: {garmentToChange.Size}");
         }

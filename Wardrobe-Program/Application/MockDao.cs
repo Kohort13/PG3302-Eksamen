@@ -7,18 +7,19 @@ namespace Wardrobe_Program
     /// <summary>
     /// An in-memory GarmentDao that can be used for testing/mocking
     /// </summary>
-    public class MockDao : IDao<Garment>
+    public class MockDao : IDao<IGarment>
     {
-        public Garment Retrieve(long id) {
-            return _data.Find(garment => garment.Id == id);
+        public IGarment Retrieve(long id) {
+            var retrievedElement = _data.Find(garment => garment.Id == id);
+            return retrievedElement ?? new NullGarment();
         }
 
-        public List<Garment> ListAll() {
+        public List<IGarment> ListAll() {
             return _data;
         }
 
-        public List<Garment> ListSome(params Predicate<Garment>[] matchers) {
-            List<Garment> filteredData = new();
+        public List<IGarment> ListSome(params Predicate<IGarment>[] matchers) {
+            List<IGarment> filteredData = new();
             foreach (var garment in _data) {
                 bool shouldAdd = true;
                 foreach (var predicate in matchers) {
@@ -33,12 +34,12 @@ namespace Wardrobe_Program
             return filteredData;
         }
 
-        public void Insert(Garment element) {
+        public void Insert(IGarment element) {
             element.Id = GetNextId();
             _data.Add(element);
         }
 
-        public void Update(long id, Garment element) {
+        public void Update(long id, IGarment element) {
             var garmentToUpdate = Retrieve(id);
             
             garmentToUpdate.Subtype = element.Subtype;
@@ -84,6 +85,6 @@ namespace Wardrobe_Program
 
         private long _nextId = 0;
 
-        private readonly List<Garment> _data = new();
+        private readonly List<IGarment> _data = new();
     }
 }

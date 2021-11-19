@@ -5,9 +5,9 @@ namespace Wardrobe_Program
 {
     class ListGarmentsController : AbstractController
     {
-        private readonly IDao<Garment> _availableGarments;
+        private readonly IDao<IGarment> _availableGarments;
 
-        public ListGarmentsController(IDao<Garment> availableGarments) : base("Lists the available garments") {
+        public ListGarmentsController(IDao<IGarment> availableGarments) : base("Lists the available garments") {
             _availableGarments = availableGarments;
         }
 
@@ -20,7 +20,7 @@ namespace Wardrobe_Program
                 }
             }
             else {
-                List<Predicate<Garment>> matchers = new();
+                List<Predicate<IGarment>> matchers = new();
                 if (command.Parameters.ContainsKey("-stype")) {
                     matchers.Add(g => g.Subtype.Contains(command.Parameters["-stype"]));
                 } if (command.Parameters.ContainsKey("-brand")) {

@@ -4,8 +4,8 @@ namespace Wardrobe_Program
 {
     public class ChangeNoteController : AbstractController
     {
-        private readonly IDao<Garment> _garmentDao;
-        public ChangeNoteController(IDao<Garment> garmentDao) : base("Changes the notes of a garment")
+        private readonly IDao<IGarment> _garmentDao;
+        public ChangeNoteController(IDao<IGarment> garmentDao) : base("Changes the notes of a garment")
         {
             _garmentDao = garmentDao;
         }
@@ -14,7 +14,7 @@ namespace Wardrobe_Program
         {
             if (!ValidateCommand(command)) return;
             if (!GetId(command, out var id)) return;
-            Garment garmentToChange = _garmentDao.Retrieve(id);
+            var garmentToChange = _garmentDao.Retrieve(id);
             garmentToChange.Note = command.Parameters["-val"];
             UserInterface.Instance.Print($"Garment notes is now: {garmentToChange.Note}");
         }

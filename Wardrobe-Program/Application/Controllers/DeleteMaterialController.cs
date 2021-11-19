@@ -4,9 +4,9 @@ namespace Wardrobe_Program
 {
     public class DeleteMaterialController : AbstractController
     {
-        private readonly IDao<Garment> _garmentDao;
+        private readonly IDao<IGarment> _garmentDao;
 
-        public DeleteMaterialController(IDao<Garment> garmentDao)
+        public DeleteMaterialController(IDao<IGarment> garmentDao)
             : base("Deletes a specified material from the garment")
         {
             _garmentDao = garmentDao;
@@ -17,7 +17,7 @@ namespace Wardrobe_Program
             if (!ValidateCommand(command)) return;
             if(!GetId(command, out var id))return;
 
-            Garment garmentToChange = _garmentDao.Retrieve(id);
+            var garmentToChange = _garmentDao.Retrieve(id);
             int materialId;
             try {
                 materialId = Convert.ToInt32(command.Parameters["-matId"]);

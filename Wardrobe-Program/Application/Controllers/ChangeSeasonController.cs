@@ -5,9 +5,9 @@ namespace Wardrobe_Program
 {
 	public class ChangeSeasonController : AbstractController
 	{
-		private readonly IDao<Garment> _garmentDao;
+		private readonly IDao<IGarment> _garmentDao;
 
-		public ChangeSeasonController(IDao<Garment> garmentDao) : base("Changes the season of a given garment") {
+		public ChangeSeasonController(IDao<IGarment> garmentDao) : base("Changes the season of a given garment") {
 			_garmentDao = garmentDao;
         }
 
@@ -16,7 +16,7 @@ namespace Wardrobe_Program
 		{
             if (!ValidateCommand(command)) return;
             if (!GetId(command, out var id)) return;
-            Garment garmentToChange = _garmentDao.Retrieve(id);
+            var garmentToChange = _garmentDao.Retrieve(id);
             List<string> newSeasons = new();
             {
                 foreach (var key in command.Parameters.Keys) {

@@ -4,9 +4,9 @@ namespace Wardrobe_Program
 {
     public class ChangePriceController : AbstractController
     {
-        private readonly IDao<Garment> _garmentDao;
+        private readonly IDao<IGarment> _garmentDao;
 
-        public ChangePriceController(IDao<Garment> garmentDao) : base("Changes the price of a garment")
+        public ChangePriceController(IDao<IGarment> garmentDao) : base("Changes the price of a garment")
         {
             _garmentDao = garmentDao;
         }
@@ -16,7 +16,7 @@ namespace Wardrobe_Program
         {
             if (!ValidateCommand(command)) return;
             if (!GetId(command, out var id)) return;
-            Garment garmentToChange = _garmentDao.Retrieve(id);
+            IGarment garmentToChange = _garmentDao.Retrieve(id);
             garmentToChange.Price = Convert.ToSingle(command.Parameters["-val"]);
             UserInterface.Instance.Print($"Garment price is now: {garmentToChange.Price}");
         }

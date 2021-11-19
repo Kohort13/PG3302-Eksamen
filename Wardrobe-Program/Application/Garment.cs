@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Wardrobe_Program
 {
-    public abstract class Garment
+    public abstract class Garment : IGarment
     {
         public long Id { get; set; }
         public string Subtype { get; set; }

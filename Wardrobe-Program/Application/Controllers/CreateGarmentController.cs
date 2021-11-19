@@ -6,9 +6,9 @@ namespace Wardrobe_Program
 {
     public class CreateGarmentController : AbstractController
     {
-        private readonly IDao<Garment> _garmentDao;
+        private readonly IDao<IGarment> _garmentDao;
         private readonly List<GarmentFactory> _availableFactories;
-        public CreateGarmentController(IDao<Garment> garmentDao, List<GarmentFactory> availableFactories) 
+        public CreateGarmentController(IDao<IGarment> garmentDao, List<GarmentFactory> availableFactories) 
             : base("Creates a new garment and adds it to the database") {
             _garmentDao = garmentDao;
             _availableFactories = availableFactories;

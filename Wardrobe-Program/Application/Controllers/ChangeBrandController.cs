@@ -4,9 +4,9 @@ namespace Wardrobe_Program
 {
 	public class ChangeBrandController : AbstractController
 	{
-		private readonly IDao<Garment> _garmentDao;
+		private readonly IDao<IGarment> _garmentDao;
 
-		public ChangeBrandController(IDao<Garment> garmentDao) : base("Changes the brand of a garment")
+		public ChangeBrandController(IDao<IGarment> garmentDao) : base("Changes the brand of a garment")
 		{
 			_garmentDao = garmentDao;
 		}
@@ -16,7 +16,7 @@ namespace Wardrobe_Program
             if (!ValidateCommand(command)) return;
             if (!GetId(command, out var id)) return;
 
-            Garment garmentToChange = _garmentDao.Retrieve(id);
+            var garmentToChange = _garmentDao.Retrieve(id);
 			garmentToChange.Brand = command.Parameters["-val"];
 			UserInterface.Instance.Print($"Garment's brand is now: {garmentToChange.Brand}");
 		}

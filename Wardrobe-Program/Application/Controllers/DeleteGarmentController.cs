@@ -6,9 +6,9 @@ namespace Wardrobe_Program
 {
     public class DeleteGarmentController : AbstractController
     {
-        private readonly IDao<Garment> _garmentDao;
+        private readonly IDao<IGarment> _garmentDao;
 
-        public DeleteGarmentController(IDao<Garment> garmentDao)
+        public DeleteGarmentController(IDao<IGarment> garmentDao)
             : base("Removes an existing garment from the database")
         {
             _garmentDao = garmentDao;

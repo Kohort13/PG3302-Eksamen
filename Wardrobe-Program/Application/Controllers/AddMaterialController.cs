@@ -4,9 +4,9 @@ namespace Wardrobe_Program
 {
     public class AddMaterialController : AbstractController
     {
-        private readonly IDao<Garment> _garmentDao;
+        private readonly IDao<IGarment> _garmentDao;
 
-        public AddMaterialController(IDao<Garment> garmentDao) : base("Adds a material to the garment") {
+        public AddMaterialController(IDao<IGarment> garmentDao) : base("Adds a material to the garment") {
             _garmentDao = garmentDao;
         }
 
@@ -29,7 +29,7 @@ namespace Wardrobe_Program
                 UserInterface.Instance.Print("One or more of parameters passed in was incorrect");
                 return;
             }
-            Garment garmentToChange = _garmentDao.Retrieve((id));
+            var garmentToChange = _garmentDao.Retrieve((id));
             garmentToChange.Materials.Add(newMaterial);
             _garmentDao.Update(id, garmentToChange);
         }
