@@ -1,6 +1,7 @@
 @startuml GarmentFactory
 
 '!include GarmentModel.puml!0
+title Garment Factory model
 hide empty members
 
 remove Shade
